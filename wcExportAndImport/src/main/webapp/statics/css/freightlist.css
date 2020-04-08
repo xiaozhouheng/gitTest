@@ -1,0 +1,93 @@
+.xoms-freightlist-grids {
+	position: relative;
+	min-height: 300px;
+}
+
+.xoms-freightlist-grids .xoms-freightlist-grid {
+	border-radius: 4px;
+	padding: 15px;
+}
+
+.xoms-freightlist-grids .xoms-freightlist-grid table {
+	margin: 0;
+	table-layout: fixed;
+}
+
+.xoms-freightlist-grids .xoms-freightlist-grid table td {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.xoms-freightlist-grids .xoms-freightlist-grid .xoms-grid-header {
+	padding: 10px 15px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background-color: #ddd;
+}
+
+.xoms-freightlist-grids .xoms-freightlist-grid .xoms-grid-header div {
+	float: left;
+}
+
+.xoms-freightlist-grids .xoms-freightlist-grid .xoms-waybillcode {
+	width: 250px;
+	min-height: 1px;
+}
+
+.xoms-pgtoolbar {
+	padding: 15px;
+}
+
+.xoms-pgtoolbar.xoms-pgtoolbar-fixed {
+	position: fixed;
+	top: 90px;
+	padding: 10px;
+	background-color: rgba(58, 158, 228, 0.2);
+	z-index: 100;
+}
+
+#pageLimit {
+	display: inline-block;
+	width: 65px;
+	margin-right: 10px;
+}
+
+.xoms-caret {
+	cursor: pointer;
+	height: 32px;
+	line-height: 32px;
+}
+
+.xoms-caret .caret {
+	-webkit-transition: all .25s ease 0s;
+	-moz-transition: all .25s ease 0s;
+	-o-transition: all .25s ease 0s;
+	transition: all .25s ease 0s;
+}
+
+.xoms-caret .caret.transition-play {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+	-webkit-transition: all 2s ease 0s;
+	-moz-transition: all .25s ease 0s;
+	-o-transition: all .25s ease 0s;
+	transition: all .25s ease 0s;
+}
+
+#xoms-freightlist-total {
+	color: #FF6633;
+	padding-right: 5px;
+}
+
+/*** 不同分辨率兼容性处理 ***/
+@media ( max-width : 1280px) {
+	.xoms-freightlist-grids {
+		overflow-x: auto;
+	}
+	.xoms-freightlist-grids .xoms-freightlist-grid {
+		width: 1200px;
+	}
+}

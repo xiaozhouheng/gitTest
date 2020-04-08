@@ -1,0 +1,83 @@
+.payonline-type-group .control-label {
+	padding-top: 23px;
+}
+
+.payonline-type label {
+	margin-right: 15px;
+	width: 130px;
+	border: 1px solid #ddd;
+	padding: 5px 5px 5px 25px;
+}
+
+.payonline-type img {
+	width: 100px;
+	height: 40px;
+}
+
+.payonline-type .payonline-type-img {
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	background-image: url(../img/payonline.jpg)
+}
+
+.payonline-type-img-po {
+	background-position: 0 -6px;
+}
+
+.payonline-type-img-pp {
+	background-position: 0 -50px;
+}
+
+.payonline-type-img-kq {
+	background-position: 0 -230px;
+}
+
+.payonline-type-img-bf {
+	background-position: 0 -183px;
+}
+
+.payonline-type-img-wy {
+	background-position: 0 -277px;
+}
+
+.payonline-type input {
+	margin-top: 15px;
+}
+
+.agreement-group, .payoneer-tb-group, .payoneer-type-group,
+	.payoneer-group {
+	display: none;
+}
+
+.amount-type {
+	font-weight: bold;
+}
+
+#amount {
+	display: inline-block;
+	width: 80%
+}
+
+.payonline-modal-main {
+	padding: 50px;
+	height: 300px;
+}
+
+.payonline-modal-main-info {
+	color: red;
+}
+
+.payonline-modal-main-error {
+	font-size: 20px;
+	height: 80px;
+}
+
+.payonline-modal-header {
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.payonline-modal-content {
+	text-indent: 2em;
+}

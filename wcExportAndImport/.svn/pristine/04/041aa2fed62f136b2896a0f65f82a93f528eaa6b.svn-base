@@ -1,0 +1,119 @@
+/*todo/toRead details, dialog content css*/
+#todo-done-dialog .content, #toRead-readed-dialog .content {
+	line-height: 24px;
+	font-size: 14px;
+	padding-top: 15px;
+	width: 695px;
+}
+/*****待办已办样式*****/
+#todo-done-dialog .content .reply-item {
+	margin: 0px 5px 25px 5px;
+}
+
+#todo-done-dialog .content .reply-item:FIRST-CHILD {
+	margin-top: 0px;
+}
+
+#todo-done-dialog .content .reply-item.is-customer {
+	
+}
+
+#todo-done-dialog .content .reply-item .personal-info-col {
+	height: 77px;
+	min-width: 56px;
+	float: left;
+	text-align: center;
+}
+
+#todo-done-dialog .content .reply-item.is-customer .personal-info-col {
+	float: right;
+}
+
+#todo-done-dialog .content .reply-item .personal-info-col .photo {
+	font-size: 44px;
+	line-height: 50px;
+}
+
+#todo-done-dialog .content .reply-item .personal-info-col .name {
+	width: 80px;
+}
+
+#todo-done-dialog .content .reply-item .pointer-col {
+	height: 77px;
+	width: 15px;
+	float: left;
+	background: url("../../../imgs/order.home/commentpoint.png") -180px 15px
+		no-repeat;
+}
+
+#todo-done-dialog .content .reply-item.is-customer .pointer-col {
+	float: right;
+	background: url("../../../imgs/order.home/commentpoint.png") -5px 15px
+		no-repeat;
+}
+
+#todo-done-dialog .content .reply-item .reply-content-col {
+	float: left;
+	max-width: 480px;
+}
+
+#todo-done-dialog .content .reply-item.is-customer .reply-content-col {
+	float: right;
+}
+
+#todo-done-dialog .content .reply-item .reply-content-col .inner-content
+	{
+	width: 100%;
+	padding: 10px;
+	background-color: #EDEFF0;
+	border-radius: 6px;
+}
+
+#todo-done-dialog .content .reply-item .reply-content-col .time {
+	display: block;
+	height: 28px;
+	border-bottom: 1px solid #ddd;
+}
+
+#todo-done-dialog .content .reply-item .reply-content-col .reply-content
+	{
+	padding-top: 5px;
+}
+
+#todo-done-dialog .content .reply-item .reply-content-col .mail-info {
+	margin-top: 15px;
+	padding-top: 3px;
+	border-top: 1px solid #999;
+	width: 300px;
+}
+/*reply样式*/
+#todo-done-dialog .content .new-reply {
+	width: 547px;
+	margin: 25px 0 35px 101px;
+}
+
+#todo-done-dialog .content .new-reply textarea {
+	height: 150px;
+	width: 494px;
+}
+
+/*****待阅已阅样式*****/
+#toRead-readed-dialog .content .footer {
+	margin-top: 30px;
+}
+
+#toRead-readed-dialog .content .footer .description {
+	float: right;
+}
+
+#toRead-readed-dialog .content .footer .author, #toRead-readed-dialog .content .footer .time
+	{
+	display: block;
+}
+
+/*****common样式*****/
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

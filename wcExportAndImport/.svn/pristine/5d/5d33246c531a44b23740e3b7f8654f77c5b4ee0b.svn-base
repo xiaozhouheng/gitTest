@@ -1,0 +1,36 @@
+package cn.abl.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.abl.pojo.AArrivalPlan;
+import cn.abl.pojo.AArrivalPlanDetails;
+import cn.abl.pojo.UUser;
+import cn.abl.vo.CustomsDeclarationVO;
+
+public interface AArrivalPlanMapperCustom {
+
+	List<AArrivalPlan> getAllAArrivalPlan(@Param("mainWaybillNumber")String mainWaybillNumber, @Param("fenWaybillNumber")String fenWaybillNumber, @Param("userId")String userId);
+	
+	AArrivalPlan getAArrivalPlanByID(@Param("id")int id);
+	
+	int deleteAArrivalPlan(@Param("id")String id);
+	
+	int deleteAArrivalPlanDetails(@Param("aid") String aid);
+	
+	List<AArrivalPlanDetails> getAllAArrivalPlanDetails(AArrivalPlanDetails aArrivalPlanDetails);
+	
+	List<AArrivalPlanDetails> checkUpdate(@Param("param")int param, @Param("id")int id);
+	
+	int deleteAArrivalPlanDetailsByID(@Param("id")String id);
+	
+	int insertAArrivalPlan(AArrivalPlan aArrivalPlan);
+	
+	List<CustomsDeclarationVO> importDeclaration(@Param("param1")String param1, @Param("customsCode")String customsCode, @Param("beginTime")String beginTime, @Param("endTime")String endTime, @Param("status")String status, @Param("createUserid")String createUserid, @Param("userType")String userType);
+
+	List<UUser> getUserForType();
+	
+	int updateReview(@Param("id")int id, @Param("userId")int userId);
+
+}

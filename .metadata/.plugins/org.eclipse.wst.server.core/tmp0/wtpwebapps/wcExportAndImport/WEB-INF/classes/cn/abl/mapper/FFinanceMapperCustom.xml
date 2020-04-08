@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.abl.dao.FFinanceMapperCustom">
+	<resultMap id="BaseResultMap" type="cn.abl.pojo.FFinance" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="inspection_fee" property="inspectionFee" jdbcType="VARCHAR" />
+    <result column="storage_fee" property="storageFee" jdbcType="VARCHAR" />
+    <result column="customs_fee" property="customsFee" jdbcType="VARCHAR" />
+    <result column="commodity_inspection_fee" property="commodityInspectionFee" jdbcType="VARCHAR" />
+    <result column="transit_fee" property="transitFee" jdbcType="VARCHAR" />
+    <result column="other1_fee" property="other1Fee" jdbcType="VARCHAR" />
+    <result column="other2_fee" property="other2Fee" jdbcType="VARCHAR" />
+    <result column="calculation_formula" property="calculationFormula" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="revenue_and_expenditure" property="revenueAndExpenditure" jdbcType="INTEGER" />
+    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="findAllFFinance" parameterType="string" resultMap="BaseResultMap">
+  	select * from f_finance 
+  		<where>
+  			<if test="companyName != null and companyName != ''">
+  			and company_name = #{companyName}
+  			</if>
+  			<if test="orderType != null and orderType != ''">
+  			and order_type = #{orderType}
+  			</if>
+  			<if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+  			and create_time between #{startTime} and #{endTime}
+  			</if>
+  		</where>
+  </select>
+</mapper>	

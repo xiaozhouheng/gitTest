@@ -1,0 +1,235 @@
+.wrap {
+	display: inline-block;
+	position: relative;
+}
+
+.template-container {
+	display: none;
+	z-index: 1024;
+	position: absolute;
+	margin: 0;
+	margin-top: 2px;
+	padding: 3px;
+	top: 33px;
+	background-color: white;
+	border: 1px solid rgba(58, 158, 228, 0.3);
+	border-radius: 4px;
+}
+/* 小屏的时候不显示tab选择面板,只能搜索  */
+@media ( max-width : 750px) {
+	.template-container {
+		display: none !important;
+	}
+}
+
+.ui-autocomplete {
+	max-height: 300px;
+	overflow-y: auto;
+	/* 防止水平滚动条 */
+	overflow-x: hidden;
+}
+/* .tabsCountryDiv{
+	display: none; 
+	z-index: 1024;
+	position: absolute;
+	margin:0;
+	padding:0;
+	top: 33px;
+	background-color: white;
+	border: 1px solid #a6c9e2;	
+}
+
+.tabsProductDiv{
+	display: none; 
+	z-index: 1024;
+	position: absolute;
+	margin:0;
+	margin-top: 1px;
+	padding:3px;
+	top: 33px;
+	background-color: white;
+	border: 1px solid #a6c9e2;	
+} */
+
+/******国家查询*******/
+.url-country {
+	text-decoration: none;
+}
+
+.div-tab-country {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.div-tab-country li {
+	min-width: 90px;
+}
+
+.div-tab-country ul {
+	margin: 0 !important;
+	padding: 0 !important;
+	padding-left: 2px !important;
+}
+
+.tabsCountryDiv .tab-content .tab-pane, .tabsProductDiv .tab-content .tab-pane
+	{
+	padding: 10px;
+}
+
+.tab-country-content a, .tab-hotCountry-content a,
+	.selected-template-container a {
+	min-width: 120px;
+	height: 30px;
+	padding: 0 10px;
+	border-radius: 3px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	color: #000;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.selected-template-container a {
+	width: 100%;
+	padding: 0 10px;
+}
+
+.tab-country-content a:hover, .tab-hotCountry-content a:hover,
+	.tab-product-content a:hover, .selected-template-container a:hover {
+	color: white;
+	background-color: #4297d7;
+	text-decoration: none;
+}
+
+.tab-country-content a:focus, .tab-hotCountry-content a:focus,
+	.tab-product-content a:focus, .selected-template-container a:focus {
+	text-decoration: none;
+}
+
+.tab-country-content a.disabled, .tab-product-content a.disabled,
+	.tab-hotCountry-content a.disabled {
+	color: #bbb;
+}
+
+.tab-country-content a.disabled:hover, .tab-product-content a.disabled:hover,
+	.tab-hotCountry-content a.disabled:hover {
+	color: #bbb;
+	background-color: #fff;
+}
+
+.selected-template-container a.seached, .tab-country-content a.seached,
+	.tab-hotCountry-content a.seached {
+	font-weight: bold;
+	color: red;
+}
+
+.tab-country-content lable, .tab-hotCountry-content lable {
+	width: 25px;
+	color: red;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/***** 产品查询 *******/
+.div-tab-product {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.div-tab-product li {
+	min-width: 90px;
+}
+
+.tab-product-content {
+	padding-bottom: 0 !important;
+}
+
+.tab-product-content a {
+	display: inline-block;
+	min-width: 140px;
+	height: 30px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	color: black;
+	line-height: 30px;
+	padding: 0 10px;
+	border-radius: 3px;
+	vertical-align: middle;
+}
+
+/* 多选框 */
+.multiselect-dialog {
+	display: none;
+}
+
+.multiselect-container .tabs-container, .multiselect-container .div-tab
+	{
+	width: 100% !important;
+}
+
+.multiselect-container .tab-content {
+	width: 100% !important;
+	overflow-y: auto;
+	height: 265px;
+}
+
+.multiselect-container>div {
+	float: left;
+}
+
+.multiselect-container>div>div {
+	border: 1px solid #ddd;
+	margin-top: 10px;
+}
+
+.selected-container {
+	height: 310px;
+	overflow-y: auto;
+}
+
+.multiselect-left {
+	width: 550px;
+}
+
+.multiselect-middle {
+	text-align: center;
+	width: 50px;
+	line-height: 360px;
+}
+
+.multiselect-middle span {
+	
+}
+
+.multiselect-right {
+	width: 200px;
+}
+
+.tabsCountryDiv {
+	width: 510px;
+	position: initial !important;
+	display: block !important;
+}
+
+.selected-template-container {
+	padding: 10px 0;
+}
+
+.selected-template-container .selected {
+	font-weight: bold;
+}
+/*autocomplete 选择粗体显示*/
+.span-autocomplete {
+	font-weight: bold;
+	color: red;
+}
+
+.ui-menu-item.disabled {
+	color: #bbb;
+}

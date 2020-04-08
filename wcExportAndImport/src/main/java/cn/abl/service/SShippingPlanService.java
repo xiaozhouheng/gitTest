@@ -1,0 +1,18 @@
+package cn.abl.service;
+
+import cn.abl.pojo.SShippingPlan;
+import cn.abl.utils.E3Result;
+import cn.abl.utils.PageBean;
+
+public interface SShippingPlanService {
+
+	PageBean getAllSShippingPlan(int page, int limit, SShippingPlan shippingPlan);
+	
+	SShippingPlan getSShippingPlanByID(int id);
+	
+	E3Result updateSShippingPlan(SShippingPlan shippingPlan, String userId);
+	
+	E3Result deleteSShippingPlan(String ids);
+	
+	PageBean getOrderStatistic();
+}

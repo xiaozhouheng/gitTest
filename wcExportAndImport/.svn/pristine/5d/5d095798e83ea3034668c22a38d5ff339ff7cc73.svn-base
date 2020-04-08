@@ -1,0 +1,827 @@
+/*
+*@Description:	xoms中页面框架的样式，包含固定的内容：navbar content footer
+*@Author:	yanxiaoe 
+*/
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #f6f6f6;
+	overflow-y: scroll;
+}
+
+.xoms-secnavbar {
+	margin-top: -20px;
+}
+
+.xoms-secnavbar a {
+	text-decoration: none;
+}
+
+select:hover {
+	cursor: pointer;
+}
+
+.xoms-container {
+	padding-top: 50px;
+}
+/* 每个页面中最外层container的默认样式 */
+.xoms-main {
+	padding-top: 45px;
+	padding-bottom: 15px;
+	background-color: #fff;
+	min-height: 650px;
+}
+/* navbar separator */
+.xoms-navbar-separator span {
+	padding: 15px 0;
+	display: inline-block;
+	color: #fff;
+}
+/* -----------top navbar start ----------- */
+.xoms-navbar, .xoms-navbar .navbar-nav>li>a {
+	background-color: #3a9ee4;
+	-moz-transition: background-color 250ms ease;
+	-webkit-transition: background-color 250ms ease;
+	-o-transition: background-color 250ms ease;
+	transition: background-color 250ms ease;
+}
+
+.xoms-navbar a {
+	color: #fff;
+}
+
+.xoms-navbar li.active>a {
+	color: #fff;
+	background-color: #1c85cf;
+}
+
+.xoms-navbar .nav .open>a, .xoms-navbar li.hover a, .xoms-navbar li a:hover,
+	.xoms-navbar li a:focus, .xoms-third-dropdown-menu li.hover a,
+	.xoms-third-dropdown-menu li a:hover, .xoms-third-dropdown-menu li a:focus
+	{
+	background-color: #1c85cf;
+	color: #fff;
+}
+
+.xoms-navbar .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+
+.xoms-navbar .navbar-brand {
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 24px;
+	letter-spacing: 1px;
+}
+
+.xoms-lang-change {
+	min-width: 72px;
+}
+
+.xoms-lang-change .flag {
+	display: inline-block;
+	width: 100%;
+	height: 16px;
+	line-height: 16px;
+	vertical-align: middle;
+	padding-left: 30px;
+}
+
+.xoms-lang-change .xoms-lang-zh .flag {
+	background: transparent url("../../imgs/i18n.png") no-repeat scroll 0 0;
+}
+
+.xoms-lang-change .xoms-lang-en .flag {
+	background: transparent url("../../imgs/i18n.png") no-repeat scroll 0
+		-36px;
+}
+
+.dropdown-menu {
+	border: 1px solid rgba(58, 158, 228, 0.3);
+	-webkit-box-shadow: 0 6px 12px rgba(58, 158, 228, 0.3);
+	box-shadow: 0 6px 12px rgba(58, 158, 228, 0.3);
+}
+
+.dropdown-menu-logout {
+	min-width: 100px;
+}
+/* -----------导航下拉框二级导航 ----------- */
+.xoms-secnavbar {
+	background-color: #fff;
+	min-height: 40px;
+	padding-top: 10px;
+	border-bottom: 1px solid rgba(58, 158, 228, 0.3);
+	position: relative;
+}
+
+.xoms-secnavbar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.xoms-secnavbar ul li {
+	/* 	display: inline-block; */
+	float: left;
+}
+
+.xoms-secnavbar ul li a {
+	color: #333;
+	padding: 15px 30px 15px 0;
+}
+
+.xoms-secnavbar ul li a:hover, .xoms-secnavbar ul li.active a {
+	color: #3a9ee4;
+}
+
+.has-secnavbar-container {
+	margin-top: 40px;
+}
+
+.xoms-margin-top-twenty {
+	margin-top: 20px;
+}
+
+.xoms-navbar-container {
+	/* 	position: relative; */
+	
+}
+
+.xoms-navbar-container .secnavbar-scroll-div, .xoms-navbar-container .thirdnavbar-scroll-div
+	{
+	display: none;
+}
+
+.xoms-navbar-container .scroll-a {
+	position: absolute;
+	font-size: 20px;
+	color: #ddd;
+	z-index: 1024;
+}
+
+.xoms-navbar-container .scroll-a:hover {
+	color: #428bca;
+}
+
+.secnavbar-scroll-div a.left {
+	left: 0;
+	top: 8px;
+}
+
+.secnavbar-scroll-div a.right {
+	right: 0;
+	top: 8px;
+}
+
+.thirdnavbar-scroll-div a.left {
+	left: 0;
+	top: 23px;
+}
+
+.thirdnavbar-scroll-div a.right {
+	right: 0;
+	top: 23px;
+}
+/* 小于等于991分辨率时,导航的间隔设置小一点以免被挤下来,另外还要隐藏掉语言切换才行 */
+@media ( max-width : 900px) {
+	.nav>li>a {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.xoms-navbar-separator, .xoms-lang-container {
+		/* 		display: none!important; */
+		
+	}
+}
+
+@media ( max-width : 767px) {
+	.xoms-secnavbar, .xoms-thirdnavbar {
+		padding-left: 20px;
+		padding-right: 20px;
+		background-color: #fff;
+	}
+	.xoms-secnavbar .container, .xoms-thirdnavbar .container {
+		position: relative;
+		overflow: hidden;
+		height: 30px;
+		padding: 0;
+	}
+	.xoms-thirdnavbar .container {
+		height: 94px;
+		padding-top: 15px;
+	}
+	.xoms-navbar-container .secnavbar-scroll-div, .xoms-navbar-container .thirdnavbar-scroll-div
+		{
+		display: block;
+	}
+	.xoms-secnavbar .container ul, .order-management-thirdnav ul {
+		min-width: 610px;
+		position: relative;
+		left: 0;
+	}
+	.xoms-navbar .xoms-navbar-separator {
+		display: none;
+	}
+	.xoms-navbar .navbar-collapse .dropdown-menu>li>a {
+		color: #fff;
+	}
+}
+/* -----------第二行导航 start----------- */
+.xoms-console-sec-nav {
+	margin: 0;
+}
+
+.xoms-console-sec-nav .navbar-nav {
+	float: right;
+}
+
+.xoms-console-sec-nav .navbar-nav>li {
+	margin-right: 20px;
+}
+
+.xoms-console-sec-nav .navbar-nav>li>a {
+	min-width: 80px;
+	text-align: center;
+	background-color: #428bca;
+	padding: 3px 15px;
+	border-radius: 15px;
+	color: #fff;
+	font-size: 12px;
+}
+
+.xoms-console-sec-nav .navbar-toggle .icon-bar {
+	background-color: #000;
+}
+
+.xoms-console-sec-nav {
+	min-height: 0;
+}
+
+.xoms-console-sec-nav li.active a, .xoms-console-sec-nav li a:hover,
+	.xoms-console-sec-nav li a:focus, .xoms-console-sec-nav .nav .open>a {
+	color: #fff;
+	background-color: #1c85cf;
+}
+/* 订单管理三级菜单 时间轴 */
+.has-thirdnavbar-container {
+	margin-top: 136px;
+}
+/* 状态时间轴样式 */
+.xoms-thirdnavbar {
+	position: relative;
+}
+
+.order-management-thirdnav {
+	padding-top: 15px;
+	background-color: #fff;
+	height: 96px;
+}
+
+.xoms-thirdnavbar ul {
+	position: relative;
+}
+
+.status-nav-line {
+	width: 100%;
+	height: 0;
+	position: absolute;
+	top: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.order-management-thirdnav li {
+	width: 13%;
+}
+
+.order-management-thirdnav a {
+	z-index: 1;
+	color: #555;
+}
+
+.order-management-thirdnav li.active a, .order-management-thirdnav li.active a:hover,
+	.order-management-thirdnav li a:hover, .order-management-thirdnav li a:active,
+	.order-management-thirdnav li a:focus {
+	background-color: transparent;
+	color: #3a9ee4;
+}
+
+.order-management-thirdnav a>span {
+	/* padding-bottom: 5px; */
+	text-align: center;
+	display: block;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.order-management-thirdnav a span i {
+	vertical-align: middle;
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+	background-color: #ddd;
+}
+
+.order-management-thirdnav a:hover {
+	color: #3a9ee4;
+}
+
+.order-management-thirdnav li a:hover span i {
+	box-shadow: 0 0 15px #3a9ee4;
+}
+
+.order-management-thirdnav li.active a span {
+	font-weight: bold;
+	font-size: 12px;
+	color: #3a9ee4;
+}
+
+.order-management-thirdnav a:hover span i {
+	background-color: #3a9ee4;
+}
+
+.order-management-thirdnav li.active a:hover span i {
+	box-shadow: none;
+}
+
+.order-management-thirdnav li.active a span i {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	vertical-align: baseline;
+	background-color: #3a9ee4;
+}
+/* ------------ 创建订单页面下的三级导航  -----------------*/
+.order-create-thirdnavbar .container {
+	background-color: #fff;
+	border-bottom: none;
+}
+
+.order-create-thirdnavbar ul {
+	padding-top: 15px;
+}
+
+.order-create-thirdnavbar .eclick {
+	padding-top: 50px;
+}
+
+@media ( max-width : 750px) {
+	.order-create-thirdnavbar .batch_upload {
+		display: none;
+	}
+}
+/* ------------ 下拉三级导航  -----------------*/
+.xoms-secnavbar .xoms-third-dropdown-menu li {
+	float: none;
+}
+
+.xoms-secnavbar ul li .xoms-third-dropdown-menu li a {
+	display: block;
+	padding: 5px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+}
+
+.xoms-secnavbar ul li .xoms-third-dropdown-menu li.active a,
+	.xoms-secnavbar ul li .xoms-third-dropdown-menu li a:hover,
+	.xoms-secnavbar ul li .xoms-third-dropdown-menu li a:focus {
+	color: #fff;
+	background-color: #1c85cf;
+}
+/* 侧导航  */
+.xoms-sidenav-container {
+	
+}
+
+.xoms-sidenav {
+	width: 100%;
+	min-height: 300px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.xoms-sidenav a {
+	text-decoration: none;
+	display: block;
+	padding: 8px 25px;
+}
+
+.xoms-sidenav-header {
+	padding: 8px 15px;
+	border-bottom: 1px solid #ddd;
+	background-color: #eee;
+	font-size: 16px;
+}
+
+.xoms-sidenav-header>span, .xoms-sidenav-sec a>span {
+	margin-right: 5px;
+}
+
+.xoms-sidenav-sec>a {
+	color: #555;
+	font-size: 13px;
+	padding-left: 25px;
+	border-bottom: 1px dotted #ddd;
+	position: relative;
+}
+
+.xoms-sidenav-sec>a:hover, .xoms-sidenav-sec>a:focus, .xoms-sidenav-sec>a.active
+	{
+	color: #3a9ee4;
+}
+
+.xoms-sidenav-sec>a .arrows {
+	display: none;
+	color: #428bca;
+	position: absolute;
+	right: -8px;
+	font-size: 16px;
+	height: 35px;
+	line-height: 35px;
+	top: 0;
+	background-color: #fff;
+	width: 25px;
+}
+
+.xoms-sidenav-third>a {
+	font-size: 12px;
+	padding: 5px 0 5px 30px;
+}
+/* -----------footer start----------- */
+.xoms-body {
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 70px;
+}
+
+.xoms-footer {
+	color: #ccc;
+	font-size: 12px;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	margin-top: -50px;
+	z-index: 1030;
+}
+/* -----------右侧的公用button 帮助 QQ FAQ 回到顶部 start----------- */
+.xoms-global-slider {
+	position: fixed;
+	right: 1px;
+	top: 45%;
+	width: 36px;
+	border: 1px solid #EAEAEA;
+	background-color: #FFFFFF;
+	z-index: 1;
+	border-radius: 3px;
+}
+
+.xoms-global-slider>ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+.xoms-global-slider>ul>li {
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.xoms-global-slider .xoms-slider-item {
+	display: block;
+	font-size: 24px;
+	height: 36px;
+	line-height: 36px;
+	color: #888888;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.xoms-global-slider .xoms-slider-item:hover {
+	color: #1c85cf;
+}
+
+.xoms-scrolltop {
+	display: none;
+}
+/* -----------表格----------- */
+.xoms-table {
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.xoms-thead {
+	display: table-header-group;
+}
+
+.xoms-tbody {
+	display: table-row-group;
+}
+
+.xoms-tr {
+	display: table-row;
+}
+
+.xoms-th {
+	display: table-cell;
+	padding: 8px;
+	border-bottom: 2px solid #DDDDDD;
+	font-weight: bold;
+}
+
+.xoms-td {
+	display: table-cell;
+	padding: 8px;
+	vertical-align: middle;
+	border-bottom: 1px solid #E4E4E4;
+}
+/* -----------label----------- */
+label.require-star-before:before {
+	content: " * ";
+	color: red;
+}
+
+label.require-star-after:after {
+	content: " * ";
+	color: red;
+}
+/* 搜索结果的关键字样式*/
+.keyword-style {
+	font-weight: bold;
+	color: red;
+}
+/* -----------通用----------- */
+/***超出长度出现省略号***/
+.xoms-ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.xoms-hidden {
+	display: none;
+}
+
+.xoms-nodata {
+	width: 82px;
+	height: 82px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: transparent url("../../imgs/nodata.png") no-repeat scroll 0
+		0;
+}
+/* IE下去掉input中的叉 */
+input::-ms-clear {
+	display: none;
+}
+/* *************** ims layout start **************** */
+.xoms-console-body .xoms-navbar .navbar-brand {
+	background-color: #2980b9;
+	width: 220px;
+}
+
+.shrink-console-sidebar {
+	display: block;
+}
+
+.xoms-console-nav-col {
+	width: 220px;
+	padding: 0;
+	z-index: 100;
+	position: absolute;
+	background-color: #e8ebf2;
+	/* 	padding-top: 10px; */
+}
+
+.xoms-console-body .container-fluid .nav>li>a {
+	padding: 15px;
+}
+
+#xoms-console-sidebar {
+	padding: 0;
+}
+
+.xoms-console-content-col {
+	height: 100%;
+	margin-top: 0;
+	margin-bottom: 0;
+	position: relative;
+	min-height: 800px;
+	padding: 15px 15px 35px 15px;
+	margin-left: 220px;
+	background-color: #fff;
+}
+
+.xoms-console-sidebar ul li a {
+	background-color: #e8ebf2;
+	color: #16191c;
+	display: block;
+}
+
+.xoms-console-sidebar .nav li .firstnavbar-a {
+	height: 44px;
+	line-height: 28px;
+	padding: 8px 15px 8px 20px;
+	border-left: 4px solid transparent;
+}
+
+.xoms-console-sidebar .nav li.firstnavbar-li.open>.firstnavbar-a {
+	border-left: 4px solid #3a9ee4;
+}
+
+.xoms-console-sidebar .nav li.firstnavbar-li.open .firstnavbar-a .icon-left
+	{
+	color: #3A9EE4;
+}
+
+.xoms-console-sidebar .nav li .firstnavbar-a:hover {
+	border-left: 4px solid #3a9ee4;
+}
+
+.firstnavbar-a .icon-left {
+	float: left;
+	margin: 5px 15px 0 0;
+	font-size: 16px;
+}
+
+.icon-right {
+	float: right;
+}
+
+.firstnavbar-a .icon-right {
+	margin-top: 7px;
+	font-size: 12px;
+}
+
+.secnavbar-ul, .thirdnavbar-ul {
+	display: none;
+}
+
+.firstnavbar-li .secnavbar-ul {
+	background-color: #e8ebf2;
+	padding: 5px 0;
+	margin: 0;
+	list-style: none;
+}
+
+.firstnavbar-li.open .secnavbar-ul {
+	display: block;
+}
+
+.secnavbar-ul li a {
+	font-size: 0.875em;
+	line-height: 38px;
+}
+
+.secnavbar-ul li .secnavbar-a {
+	padding-left: 66px;
+}
+
+.secnavbar-ul li .secnavbar-a .icon-right {
+	font-size: 8px;
+	width: 10px;
+	height: 10px;
+	margin: 15px 20px 0 0;
+}
+
+li.open>a .icon-right {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.secnavbar-li.open .thirdnavbar-ul {
+	display: block;
+	padding: 5px 0;
+	margin: 0;
+	list-style: none;
+	background-color: #dcdfe6;
+}
+
+.xoms-console-sidebar .nav li>a, .xoms-console-sidebar .nav li>a:focus {
+	background-color: #e8ebf2;
+	color: #16191c;
+}
+
+.xoms-console-sidebar .nav li>a:hover {
+	background-color: #e8ebf2;
+	color: #3A9EE4;
+	background-color: #dbdee5;
+}
+
+.xoms-console-sidebar .thirdnavbar-ul li>.thirdnavbar-a,
+	.xoms-console-sidebar .thirdnavbar-ul li>.thirdnavbar-a:hover,
+	.xoms-console-sidebar .thirdnavbar-ul li>.thirdnavbar-a:focus {
+	padding-left: 85px;
+	background-color: #dcdfe6;
+}
+
+.xoms-console-sidebar .nav li.active>a, .xoms-console-sidebar .nav li.active>a:hover,
+	.xoms-console-sidebar .nav li.active>a:focus {
+	color: #3A9EE4;
+}
+
+.xoms-console-main {
+	background-color: #e8ebf2;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* 一级菜单小图标样式 */
+.nav-small .xoms-console-sidebar .nav li .firstnavbar-a .title,
+	.nav-small .xoms-console-sidebar .nav li .firstnavbar-a .icon-right {
+	display: none;
+}
+
+.nav-small .xoms-console-sidebar .nav li.firstnavbar-li.hover>.firstnavbar-a
+	{
+	border-left: 4px solid #3a9ee4;
+	color: #3A9EE4;
+}
+
+.nav-small .xoms-console-nav-col {
+	width: 64px;
+}
+
+.nav-small .xoms-console-content-col {
+	margin-left: 64px;
+}
+
+.nav-small .firstnavbar-li .secnavbar-ul {
+	display: none;
+	left: 64px;
+	position: absolute;
+	top: 0;
+	width: 200px;
+}
+
+.nav-small .firstnavbar-li.hover .secnavbar-ul {
+	display: block;
+}
+
+.nav-small .secnavbar-ul li .secnavbar-a {
+	padding-left: 28px;
+}
+
+.nav-small .xoms-console-sidebar .thirdnavbar-ul li>.thirdnavbar-a {
+	padding-left: 45px;
+}
+
+@media ( max-width : 767px) {
+	.xoms-console-body .xoms-navbar .navbar-brand {
+		background-color: #3A9EE4;
+		width: auto;
+	}
+	.xoms-console-body .container-fluid .nav>li>a {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	.xoms-console-body .xoms-console-nav-col {
+		position: relative;
+		width: auto;
+	}
+	.xoms-console-body .xoms-console-sidebar {
+		max-height: 336px;
+		overflow-y: scroll;
+	}
+	.xoms-console-body .xoms-console-content-col {
+		margin-left: 0;
+	}
+	.shrink-console-sidebar {
+		display: none;
+	}
+}
+
+.xoms-console-body-container .xoms-global-slider,
+	.xoms-console-body-container .xoms-global-slider li {
+	display: none;
+}
+
+.xoms-console-body-container .xoms-global-slider .xoms-scrolltop {
+	dispaly: block;
+}
+
+.xoms-console-body-container .xoms-footer {
+	background-color: #fff;
+}
+
+.xoms-console-body {
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 50px;
+}
+/* *************** ims layout end *************** */

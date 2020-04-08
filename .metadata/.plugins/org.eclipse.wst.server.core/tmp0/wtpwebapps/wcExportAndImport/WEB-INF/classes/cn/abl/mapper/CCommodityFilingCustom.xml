@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.abl.dao.CCommodityFilingCustom">
+
+<resultMap id="BaseResultMap" type="cn.abl.pojo.CCommodityFiling" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_number" property="itemNumber" jdbcType="VARCHAR" />
+    <result column="bar_code" property="barCode" jdbcType="VARCHAR" />
+    <result column="item_ch_name" property="itemChName" jdbcType="VARCHAR" />
+    <result column="item_en_name" property="itemEnName" jdbcType="VARCHAR" />
+    <result column="hs_code" property="hsCode" jdbcType="VARCHAR" />
+    <result column="net_weight" property="netWeight" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="brand_type" property="brandType" jdbcType="VARCHAR" />
+    <result column="use" property="use" jdbcType="VARCHAR" />
+    <result column="features" property="features" jdbcType="VARCHAR" />
+    <result column="material" property="material" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="package_type" property="packageType" jdbcType="VARCHAR" />
+    <result column="standard_sizes" property="standardSizes" jdbcType="VARCHAR" />
+    <result column="other" property="other" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="hs_code_status" property="hsCodeStatus" jdbcType="INTEGER" />
+    <result column="reviewer_id" property="reviewerId" jdbcType="INTEGER" />
+    <result column="review_time" property="reviewTime" jdbcType="TIMESTAMP" />
+    <result column="review_status" property="reviewStatus" jdbcType="INTEGER" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="business_number" property="businessNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  
+	<select id="getAllcommodityFiling" parameterType="cn.abl.pojo.CCommodityFiling" resultMap="BaseResultMap">
+		select * from c_commodity_filing where user_id = #{userId}
+			<if test="itemNumber != null and itemNumber != ''">
+				and item_number = #{itemNumber}
+			</if>
+			<if test="itemChName != null and itemChName != ''">
+				and item_ch_name = #{itemChName}
+			</if>
+			<if test="hsCode != null and hsCode != ''">
+				and hs_code = #{hsCode}
+			</if>
+			<if test="reviewStatus != null and reviewStatus != ''">
+				and review_status = #{reviewStatus}
+			</if>
+	</select>
+	
+	<select id="findHscodeByItemName" resultType="cn.abl.pojo.THscode">
+		select * from t_hscode where hcode = #{hcode}
+	</select>
+	
+	<insert id="insertAllCommodityFiling">
+		insert into c_commodity_filing (item_number, bar_code, 
+	      item_ch_name, item_en_name, hs_code, 
+	      net_weight, brand, brand_type, 
+	      uses, features, material, 
+	      model, package_type, standard_sizes, 
+	      other, image, user_id, 
+	      create_time, hs_code_status) values
+	     <foreach collection="list" item="item" separator=",">
+	     (#{item.itemNumber,jdbcType=VARCHAR}, #{item.barCode,jdbcType=VARCHAR}, 
+	      #{item.itemChName,jdbcType=VARCHAR}, #{item.itemEnName,jdbcType=VARCHAR}, #{item.hsCode,jdbcType=VARCHAR}, 
+	      #{item.netWeight,jdbcType=VARCHAR}, #{item.brand,jdbcType=VARCHAR}, #{item.brandType,jdbcType=VARCHAR}, 
+	      #{item.uses,jdbcType=VARCHAR}, #{item.features,jdbcType=VARCHAR}, #{item.material,jdbcType=VARCHAR}, 
+	      #{item.model,jdbcType=VARCHAR}, #{item.packageType,jdbcType=VARCHAR}, #{item.standardSizes,jdbcType=VARCHAR}, 
+	      #{item.other,jdbcType=VARCHAR}, #{item.image,jdbcType=VARCHAR}, #{item.userId,jdbcType=INTEGER}, 
+	      #{item.createTime,jdbcType=TIMESTAMP}, #{item.hsCodeStatus,jdbcType=INTEGER})
+	     </foreach> 
+	</insert>
+	
+	<select id="findAfterCommodityFiling" parameterType="cn.abl.pojo.CCommodityFiling" resultMap="BaseResultMap">
+		select * from c_commodity_filing where user_id in (${dataPrivilege})
+			<if test="itemNumber != null and itemNumber != ''">
+				and item_number = #{itemNumber}
+			</if>
+			<if test="itemChName != null and itemChName != ''">
+				and item_ch_name = #{itemChName}
+			</if>
+			<if test="hsCode != null and hsCode != ''">
+				and hs_code = #{hsCode}
+			</if>
+			<if test="reviewStatus != null and reviewStatus != ''">
+				and review_status = #{reviewStatus}
+			</if>
+	</select>
+	
+	<select id="exportCommodityFiling" parameterType="cn.abl.pojo.CCommodityFiling" resultType="java.util.Map">
+		SELECT
+			id,
+			item_number itemNumber,
+			bar_code barCode,
+			item_ch_name itemChName,
+			item_en_name itemEnName,
+			hs_code hsCode,
+			net_weight netWeight,
+			brand,
+			brand_type brandType,
+			uses,
+			features,
+			material,
+			model,
+			package_type packageType,
+			standard_sizes standardSizes,
+			other,
+			image,
+			hs_code_status hsCodeStatus,
+			<!-- review_status reviewStatus, -->
+			note
+			<!-- company_code companyCode, -->
+			<!-- business_number businessNumber -->
+		FROM
+			c_commodity_filing
+		<where>
+			<if test="itemNumber != null and itemNumber != ''">
+				and item_number = #{itemNumber}
+			</if>
+			<if test="itemChName != null and itemChName != ''">
+				and item_ch_name = #{itemChName}
+			</if>
+			<if test="hsCode != null and hsCode != ''">
+				and hs_code = #{hsCode}
+			</if>
+			<if test="reviewStatus != null and reviewStatus != ''">
+				and review_status = #{reviewStatus}
+			</if>
+		</where>	
+	</select>
+	
+	<select id="exportCommodityFilingByID" parameterType="string" resultType="java.util.Map">
+		SELECT
+			id,
+			item_number itemNumber,
+			bar_code barCode,
+			item_ch_name itemChName,
+			item_en_name itemEnName,
+			hs_code hsCode,
+			net_weight netWeight,
+			brand,
+			brand_type brandType,
+			uses,
+			features,
+			material,
+			model,
+			package_type packageType,
+			standard_sizes standardSizes,
+			other,
+			image,
+			hs_code_status hsCodeStatus,
+			<!-- review_status reviewStatus, -->
+			note
+			<!-- company_code companyCode, -->
+			<!-- business_number businessNumber -->
+		FROM
+			c_commodity_filing
+		WHERE id in (${id})
+	</select>
+</mapper>

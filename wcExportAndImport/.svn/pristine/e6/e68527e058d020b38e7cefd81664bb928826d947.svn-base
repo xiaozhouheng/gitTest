@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+em.error {
+	color: #DA0000;
+	font-size: 12px;
+	margin-left: 13px;
+	height: 32px;
+	line-height: 32px;
+}
+
+em.success {
+	color: #009902;
+	font-size: 12px;
+	margin-left: 13px;
+	height: 32px;
+	line-height: 32px;
+}
+
+.error-tips {
+	display: inline-block;
+	color: #FF3C3C;
+	margin-top: 3px;
+}

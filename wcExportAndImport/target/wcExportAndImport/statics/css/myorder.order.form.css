@@ -1,0 +1,250 @@
+/* 添加订单样式 */
+.create-order-form .form-control {
+	width: 100%;
+}
+
+.declare-info .form-control {
+	width: 100%;
+}
+
+.declare-info {
+	padding: 0 10px;
+}
+
+.declare-info .form-group .control-label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.declare-del-div {
+	text-align: right;
+	padding-top: 45px;
+}
+
+.declare-del-div a {
+	color: #bbb;
+	display: none;
+}
+
+.declare-del-div a:hover {
+	color: rgb(231, 76, 60);
+}
+
+.declare-del-div .badge {
+	background-color: #3a9ee4;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	padding: 0;
+}
+
+.declare-form-div {
+	padding: 15px;
+	border-radius: 4px;
+	background-color: #F6F6F6;
+}
+
+.declare-btn {
+	padding-top: 6px;
+}
+
+.declare-btn button {
+	margin-right: 5px;
+}
+
+.form-title label {
+	font-size: 16px;
+	color: #3a9ee4;
+}
+
+.declare-select {
+	padding-top: 7px;
+}
+
+.create-order-col {
+	
+}
+
+.create-order-nav {
+	list-style: none;
+	min-width: 160px;
+	padding: 0;
+	position: absolute;
+	border: 1px solid #ddd;
+	left: 100px;
+	top: 0;
+	transition: top 1s;
+	-webkit-transition: top 1s;
+}
+
+.order-button-container {
+	padding: 15px 0;
+	text-align: right;
+	border-top: 1px solid #ddd;
+}
+
+.create-order-nav li {
+	
+}
+
+.create-order-nav li a {
+	display: block;
+	padding: 10px 15px;
+}
+
+.create-order-nav li a:hover, .create-order-nav li.active a {
+	background-color: #eee;
+}
+
+.create-order-nav li a span {
+	margin-right: 5px;
+	background-color: #428bca;
+}
+
+.radio label, .checkbox label {
+	margin-right: 8px;
+}
+
+#productName {
+	width: 100%;
+	float: left;
+}
+
+.isNeedSendBack-div {
+	margin-left: 15px;
+	float: left;
+	display: none;
+}
+
+.insurance-div, .fba-div, .isDeclare-div, .hasSignature-div {
+	display: none;
+}
+
+.fba-div-show, .insurance-div-show, .isDeclare-div-show,
+	.hasSignature-div-show {
+	display: block;
+}
+
+.insurance-div div {
+	float: left;
+}
+
+.insurance-div .radio {
+	margin-right: 15px;
+}
+
+.insurance-div .form-control {
+	width: 60px;
+	margin-right: 10px;
+	float: left;
+}
+
+.insurance-div div label {
+	font-weight: normal;
+}
+
+.insurance-money {
+	display: none;
+}
+
+.declare-div .form-control {
+	float: left;
+}
+
+#pcs, #unitPrice {
+	width: 40%;
+	margin-right: 10px;
+	float: left;
+}
+
+#unitCode, #unit {
+	width: 50%;
+}
+
+select.form-control {
+	padding: 6px 3px;
+}
+/* 小屏显示时表单的特殊处理 */
+@media ( max-width : 750px) {
+	.form-horizontal .form-group {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.declare-del-div {
+		padding-top: 0;
+	}
+	.create-order-form .order-info-input {
+		margin-bottom: 15px;
+	}
+}
+
+/* 订单详情 */
+.order-info-view .order-info-value {
+	display: block;
+	color: #787878;
+}
+
+.order-info-view .order-info-input {
+	display: none;
+}
+
+.order-info-add .order-info-value, .order-info-edit .order-info-value {
+	display: none;
+}
+
+.order-info-add .order-info-input, .order-info-edit .order-info-input {
+	display: show;
+}
+
+.order-info-value {
+	font-weight: normal !important;
+	text-align: left !important;
+}
+
+.order-trackingno-div {
+	display: none;
+}
+
+.order-info-view .order-trackingno-div {
+	display: block;
+}
+
+.received-toolbar-fixed {
+	position: fixed;
+	top: 90px;
+	padding: 10px;
+	background-color: rgba(58, 158, 228, 0.2);
+	z-index: 100;
+}
+
+.back-main {
+	position: absolute;
+	right: 15%;
+	border: 1px solid;
+	padding: 0 15px;
+	border-radius: 14px;
+	z-index: 100;
+	background-color: #fff;
+}
+
+@media ( max-width : 970px) {
+	.back-main {
+		right: 5%;
+	}
+}
+
+.back-main-fixed {
+	position: fixed;
+	top: 100px;
+}
+
+.back-main-add {
+	display: none;
+}
+
+.comment-item .comment-content {
+	text-align: left;
+}

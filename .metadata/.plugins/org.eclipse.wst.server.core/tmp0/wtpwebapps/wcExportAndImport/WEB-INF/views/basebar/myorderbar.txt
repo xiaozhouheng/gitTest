@@ -1,0 +1,82 @@
+	<!--
+    ʱ�䣺2018-02-07
+    ������������������
+-->
+	<nav class="navbar navbar-default container-fluid">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<%=path%>/login1/toindex.html">ZDA</a>
+			</div>
+
+			<div class="collapse navbar-collapse "
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav ">
+					<li class=""><a href="<%=path%>/login1/toindex.html"><spring:message
+								code="center" /></a></li>
+					<li class="dropdown active"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><spring:message code="order" /><span
+							class="caret"></span></a>
+						<ul class="dropdown-menu active">
+							<li><a href="<%=path%>/my_orders/to_create.html"><spring:message
+										code="createOrder" /></a></li>
+							<li><a href="<%=path%>/orderManage/draft.html"><spring:message
+										code="orderManager" /></a></li>
+							<li><a href="<%=path%>/my_order/order_problem.html"><spring:message
+										code="errOrder" /></a></li>
+							<li><a href="<%=path%>/queryOrder/toquery.html"><spring:message
+										code="queryOrder" /></a></li>
+							<li><a href="<%=path%>/print/printMD.html"><spring:message
+										code='print.printMD' /></a></li>
+							<%-- <li><a href="<%=path%>/orderZf/orderZf.html"><spring:message
+										code='PaymentOfFreight' /></a></li> --%>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><spring:message code="finance" /><span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<%=path%>/mybill/custom.html"><spring:message
+										code="myBill" /></a></li>
+							<%-- <li><a href="<%=path%>/queryOrder/recharge.html"><spring:message code="recharge" /></a></li> --%>
+							<li><a href="<%=path%>/freeCount/findqt.html"><spring:message
+										code="freeCount" /></a></li>
+							<li><a href="<%=path%>/freeMx/findMx.html"><spring:message
+										code="freeMx" /></a></li>
+							<li><a href="<%=path%>/insurance/insurance.html"><spring:message code="insurance" /></a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><spring:message code="person" /><span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<%=path%>/declare/toquery.html"><spring:message
+										code="declare" /></a></li>
+							<li><a href="<%=path%>/sender/sender.html"><spring:message
+										code="sender" /></a></li>
+							<li><a href="<%=path%>/register/toupdate.html"><spring:message
+										code="pwd" /></a></li>
+						</ul></li>
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><%=username %><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<%=path%>/login1/loginOut.html"><spring:message
+										code="out" /></a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>

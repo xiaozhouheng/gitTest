@@ -1,0 +1,269 @@
+package cn.abl.service.impl;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import cn.abl.dao.CCorporateInformationMapperCustom;
+import cn.abl.dao.MModularMapper;
+import cn.abl.dao.MModularMapperCustom;
+import cn.abl.dao.UUserMapper;
+import cn.abl.dao.UUserMapperCustom;
+import cn.abl.pojo.MModular;
+import cn.abl.pojo.MModularExample;
+import cn.abl.pojo.UUser;
+import cn.abl.pojo.UUserExample;
+import cn.abl.pojo.UUserExample.Criteria;
+import cn.abl.service.UserService;
+import cn.abl.utils.E3Result;
+import cn.abl.utils.JsonUtils;
+import cn.abl.utils.PageBean;
+import cn.abl.utils.Tree;
+
+@Service
+public class UserServiceImpl implements UserService{
+	@Autowired CCorporateInformationMapperCustom CCorporateInformationMapperCustom;
+	
+	@Autowired
+	private UUserMapperCustom uuserMapperCustom;
+	@Autowired
+	private UUserMapper UUserMapper;
+	@Autowired
+	private MModularMapper mModularMapper;
+	@Autowired
+	private MModularMapperCustom mModularMapperCustom;
+
+	@Override
+	public PageBean findAllUser(int page, int limit, UUser user) {
+		PageHelper.startPage(page, limit);
+		List<UUser> userList = uuserMapperCustom.findAllUser(user);
+		PageInfo<UUser> pageInfo = new PageInfo<>(userList);
+		List<UUser> list = pageInfo.getList();
+		long total = pageInfo.getTotal();
+		PageBean pageBean = new PageBean();
+		pageBean.setList(list);
+		pageBean.setTotal(total);
+		return pageBean;
+	}
+
+	@Override
+	public Map<String, Object> getUserBySession(String userId) {
+		// 从session中取用户信息
+		UUser user = UUserMapper.selectByPrimaryKey(Integer.parseInt(userId));
+		HashMap<String, Object> map = new HashMap<>();
+		List<String> permsList;
+		MModularExample example = new MModularExample();
+		example.setOrderByClause("id");
+		List<MModular> list = mModularMapper.selectByExample(example);
+		permsList = new ArrayList<>(list.size());
+		for (MModular mModular : list) {
+			permsList.add(mModular.getCode());
+		}
+		Set<String> hashSet = new HashSet<>();
+		for (String string : permsList) {
+			if (StringUtils.isBlank(string)) {
+				continue;
+			}
+			hashSet.addAll(Arrays.asList(string.trim().split(",")));
+		}
+		if (1 == user.getId() || "admin".equals(user.getUserName())) {
+			map.put("modularPriv", hashSet);
+		} else {
+			map.put("modularPriv", user.getModularPrivilege());
+		}
+		map.put("id", user.getId());
+		map.put("usertype", user.getUserType());
+		map.put("username", user.getUserName());
+		map.put("dataPriv", user.getDataPrivilege());
+		return map;
+	}
+
+	@Override
+	public E3Result login(String username, String password) {
+		UUserExample example = new UUserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUserNameEqualTo(username);
+		List<UUser> list = UUserMapper.selectByExample(example);
+		
+		
+		
+		
+		if (list == null || list.size() == 0) {
+			return E3Result.build(400, "用户名或密码错误");
+		} else {
+			UUser user = list.get(0);
+			if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassWord())) {
+				return E3Result.build(400, "用户名或密码错误");
+			}
+			if (user.getStatus() == 0) {
+				return E3Result.build(400, "该账号未经审核");
+			}
+			String findByUserId = CCorporateInformationMapperCustom.findByUserId(user.getId()+"");
+			user.setCreateUserId(null==findByUserId?0:Integer.parseInt(findByUserId));
+			
+			
+			E3Result result = new E3Result();
+			result.setData(user);
+			result.setMsg(String.valueOf(user.getId()));
+			result.setStatus(200);
+			return result;
+		}
+	}
+
+	@Override
+	public E3Result register(UUser user) {
+		if (StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassWord()) || StringUtils.isBlank(user.getEmail())) {
+			return E3Result.build(400, "数据不完整,注册失败!");
+		} else {
+			UUserExample example = new UUserExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andUserNameEqualTo(user.getUserName());
+			List<UUser> list = UUserMapper.selectByExample(example);
+			if (list.size() > 0 && null == list) {
+				return E3Result.build(400, "用户名被占用!");
+			} else {
+				user.setCreateTime(new Date());
+				user.setStatus(1);
+				String md5PW = DigestUtils.md5DigestAsHex(user.getPassWord().getBytes());
+				user.setPassWord(md5PW);
+				user.setUserType(2);
+				int i = uuserMapperCustom.insertUser(user);
+				user.setDataPrivilege(String.valueOf(user.getId()));
+				int j = UUserMapper.updateByPrimaryKeySelective(user);
+				return j > 0 ? E3Result.ok() : E3Result.build(400, "新增失败");
+			}
+
+		}
+	}
+
+	@Override
+	public Object findModularPrivilege() {
+		
+		List<MModular> list = mModularMapperCustom.findModularPrivilege(0);
+		Tree tree = new Tree();
+		tree.setId(0l);
+		tree.setText("功能模块");
+		ArrayList<Tree> treeList1 = new ArrayList<>();
+		for (MModular modular : list) {
+			String code = modular.getCode();
+			Tree tree2 = new Tree();
+			List<MModular> list2 = mModularMapperCustom.findModularPrivilege(modular.getId());
+			tree2.setId((long)modular.getId());
+			tree2.setText(modular.getName());
+			ArrayList<Tree> treeList2 = new ArrayList<>();
+			for (MModular modular2 : list2) {
+				Tree tree3 = new Tree();
+				String code2 = modular2.getCode();
+				tree3.setId((long)modular2.getId());
+				tree3.setText(modular2.getName());
+				/*if (modularPrivilege != null || modularPrivilege.contains(code2)) {
+					tree3.setChecked(true);
+				}*/
+				treeList2.add(tree3);
+			}
+			tree2.setChildren(treeList2);
+			/*if (treeList2.size() > 0) {
+				tree2.setState("open");
+			} else {
+				if (modularPrivilege != null || modularPrivilege.contains(code)) {
+					tree2.setChecked(true);
+				}
+			}*/
+			treeList1.add(tree2);
+		}
+		tree.setChildren(treeList1);
+		ArrayList<Object> list2 = new ArrayList<>();
+		list2.add(tree);
+		return list2;
+	}
+
+	@Override
+	public UUser findUserByID(String id) {
+		UUser user = UUserMapper.selectByPrimaryKey(Integer.valueOf(id));
+		return user;
+	}
+
+	@Override
+	public E3Result updateModularPrivilege(UUser user, String userId) {
+		if (user.getId() != null) { // 修改
+			if (StringUtils.isBlank(user.getEmail()) || StringUtils.isBlank(user.getUserName())) {
+				return E3Result.build(400, "数据不完整,操作失败!");
+			}
+			List<UUser> list = uuserMapperCustom.checkUserByUsername(user);
+			if (list.size() > 0 && list != null) {
+				return E3Result.build(400, "用户名已被占用!");
+			}
+			user.setCreateTime(new Date());
+			user.setCreateUserId(Integer.valueOf(userId));
+			user.setStatus(1);
+			user.setPassWord(DigestUtils.md5DigestAsHex(user.getPassWord().getBytes()));
+			UUserMapper.updateByPrimaryKeySelective(user);
+		} else { // 新增
+			if (StringUtils.isBlank(user.getEmail()) || StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassWord())) {
+				return E3Result.build(400, "数据不完整,操作失败!");
+			}
+			UUserExample example = new UUserExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andUserNameEqualTo(user.getUserName());
+			List<UUser> list = UUserMapper.selectByExample(example);
+			if (list.size() > 0 && list != null) {
+				return E3Result.build(400, "用户名已被占用!");
+			}
+			user.setCreateUserId(Integer.valueOf(userId));
+			user.setCreateTime(new Date());
+			user.setStatus(1);
+			user.setPassWord(DigestUtils.md5DigestAsHex(user.getPassWord().getBytes()));
+			uuserMapperCustom.insertUser(user);
+			user.setDataPrivilege(String.valueOf(user.getId()));
+			int j = UUserMapper.updateByPrimaryKeySelective(user);
+			return j > 0 ? E3Result.ok() : E3Result.build(400, "新增失败");
+		}
+		return E3Result.ok();
+	}
+
+	@Override
+	public List<UUser> findDataPrivilege() {
+		List<UUser> list = uuserMapperCustom.findDataPrivilege();
+		return list;
+	}
+
+	@Override
+	public E3Result deleteByID(String ids) {
+		int i = uuserMapperCustom.deleteByID(ids);
+		if (0 == i) {
+			return E3Result.build(400, "删除失败!");
+		}
+		return E3Result.ok();
+	}
+
+	@Override
+	public E3Result updateDataPrivilege(int userId, String dataPrivilege) {
+		UUser user = new UUser();
+		user.setId(userId);
+		user.setDataPrivilege(dataPrivilege);
+		int i = UUserMapper.updateByPrimaryKeySelective(user);
+		return i > 0 ? E3Result.ok() : E3Result.build(400, "修改失败!");
+	}
+
+	@Override
+	public List<UUser> selectAllUsers() {
+		List<UUser> list = UUserMapper.selectByExample(null);
+		return list;
+	}
+	
+	
+
+}

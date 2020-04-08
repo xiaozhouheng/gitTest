@@ -1,0 +1,24 @@
+package cn.abl.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("page")
+public class PageController {
+
+	@RequestMapping("/pageJump")
+	public String pageJump(String path) {
+		return path;
+	}
+	
+	@RequestMapping("/updateJump")
+	public String updateJump(String path, HttpServletRequest request) {
+		String id = request.getParameter("id");
+		
+		request.setAttribute("id", id);
+		return path;
+	}
+}

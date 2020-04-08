@@ -1,0 +1,100 @@
+/********* 该插件给了基础样式，还给出一个Demo样式，作者的意图是让开发者直接自己定制样式 *********/
+/********* 由于它没有命名空间，会对bootstrap的基础样式造成覆盖，所以我自己定制了默认的基础样式，并添加了命名空间 *********/
+
+/***基础样式***/
+.jqpg.pagination {
+	display: inline-block;
+	border: 1px solid #CDCDCD;
+	border-radius: 3px;
+	padding: 0;
+	margin: 0;
+}
+
+.jqpg.pagination a {
+	display: block;
+	float: left;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	outline: none;
+	border-right: 1px solid #CDCDCD;
+	border-left: 1px solid #CDCDCD;
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: Times, 'Times New Roman', Georgia, Palatino;
+	color: #333333;
+	background-color: #ffffff;
+	border-color: #cccccc;
+}
+
+.jqpg.pagination a:hover, .jqpg.pagination a:focus, .jqpg.pagination a:active
+	{
+	color: #333333;
+	background-color: #ebebeb;
+	border-color: #adadad;
+}
+
+.jqpg.pagination a.disabled, .jqpg.pagination a.disabled:hover, .jqpg.pagination a.disabled:focus,
+	.jqpg.pagination a.disabled:active {
+	background-color: #ffffff;
+	border-color: #cccccc;
+	cursor: default;
+}
+
+.jqpg.pagination a.disabled {
+	opacity: 0.65;
+}
+
+.jqpg.pagination a:first-child {
+	border: none;
+	border-radius: 2px 0 0 2px;
+}
+
+.jqpg.pagination a:last-child {
+	border: none;
+	border-radius: 0 2px 2px 0;
+}
+
+.jqpg.pagination input {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 120px;
+	height: 30px;
+	outline: none;
+	border: none;
+	vertical-align: middle;
+	text-align: center;
+	border-radius: 0;
+}
+
+/*** primary theme ***/
+.jqpg-primary.jqpg.pagination {
+	color: #ffffff;
+	background-color: #3a9ee4;
+	border-color: #2393e1;
+}
+
+.jqpg-primary.jqpg.pagination a {
+	color: #ffffff;
+	background-color: #3a9ee4;
+	border-color: #2393e1;
+}
+
+.jqpg-primary.jqpg.pagination a:hover, .jqpg-primary.jqpg.pagination a:focus,
+	.jqpg-primary.jqpg.pagination a:active {
+	color: #ffffff;
+	background-color: #1c85cf;
+	border-color: #1871af;
+}
+
+.jqpg-primary.jqpg.pagination a.disabled, .jqpg-primary.jqpg.pagination a.disabled:hover,
+	.jqpg-primary.jqpg.pagination a.disabled:focus, .jqpg-primary.jqpg.pagination a.disabled:active
+	{
+	background-color: #3a9ee4;
+	border-color: #2393e1;
+	cursor: default;
+}

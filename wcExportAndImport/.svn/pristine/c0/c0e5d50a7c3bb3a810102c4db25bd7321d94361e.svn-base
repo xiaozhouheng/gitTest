@@ -1,0 +1,405 @@
+/*  
+*@Description:	xoms中覆盖bootstrap的样式表 以及部分通用的样式
+*@Author:	yanxiaoe 
+*/
+
+/* 适应更宽的屏幕 */
+@media ( min-width : 1800px) { /*	.container {
+		width: 80%;
+	}*/
+}
+
+@media ( max-width : 991px) {
+	.container {
+		width: 100%;
+	}
+}
+/* 解决在IE下滚动条盖住右边内容的问题 */
+html, body {
+	-ms-overflow-style: scrollbar;
+}
+/* 消除不同浏览器的默认样式 */
+a:focus {
+	outline-style: none;
+}
+/* 导航上的三角的由向下变为向上 */
+.btn-group.open>button .caret, li.open>a>.caret {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.btn-group>button .caret, li>a>.caret {
+	-webkit-transition: all .25s ease 0s;
+	-moz-transition: all .25s ease 0s;
+	-o-transition: all .25s ease 0s;
+	transition: all .25s ease 0s;
+}
+
+.btn {
+	-moz-transition: background-color 250ms ease;
+	-webkit-transition: background-color 250ms ease;
+	-o-transition: background-color 250ms ease;
+	transition: background-color 250ms ease;
+}
+/* 消除按钮的focus样式，原因是点击按钮后，样式不会回到原来的样式  */
+.btn-primary:focus {
+	background-color: #3a9ee4;
+	border-color: #2393e1;
+}
+/* 页签 */
+.nav.nav-tabs a {
+	color: #333;
+}
+
+.nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+	color: #3a9ee4;
+}
+
+.xoms-container .row {
+	margin-bottom: 15px;
+}
+/* button 相关 */
+.xoms-btn-container button {
+	min-width: 80px;
+	margin-right: 5px;
+}
+
+.xoms-btn-container button:only-child {
+	margin-right: 0;
+}
+
+.form-inline button {
+	height: 32px;
+}
+/* 导航相关 */
+.dropdown-menu>li>a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.xoms-navbar .dropdown-menu>li>a:hover {
+	color: #fff;
+	-moz-transition: background-color 250ms ease, color 250ms ease;
+	-webkit-transition: background-color 250ms ease, color 250ms ease;
+	-o-transition: background-color 250ms ease, color 250ms ease;
+	transition: background-color 250ms ease, color 250ms ease;
+}
+/* 标签 相关 */
+label {
+	font-weight: normal;
+}
+
+.label {
+	font-size: 100%;
+	padding: 10px;
+}
+
+.form-title label {
+	font-size: 16px;
+	color: #3a9ee4;
+}
+/* form 相关 */
+.form-control {
+	height: 32px;
+	box-shadow: none;
+	padding: 6px 5px;
+	color: #444;
+}
+
+.controls {
+	overflow: hidden;
+}
+
+.controls .form-control {
+	float: left;
+}
+
+.controls label {
+	padding: 5px 0 0 5px;
+}
+
+.controls label.error {
+	color: red;
+}
+
+.controls label.success {
+	color: green;
+}
+
+.controls label.info {
+	color: green;
+}
+
+textarea {
+	resize: none;
+}
+/* 覆盖placeholder的默认样式 */
+::-webkit-input-placeholder {
+	color: #B8B8B8 !important;
+}
+
+:-moz-placeholder {
+	color: #B8B8B8 !important;
+}
+
+::-moz-placeholder {
+	color: #B8B8B8 !important;
+}
+
+:-ms-input-placeholder {
+	color: #B8B8B8 !important;
+}
+
+.xoms-placeholder {
+	color: #B8B8B8 !important;
+}
+/* 搜索框 */
+.xoms-search-form .form-group {
+	position: relative;
+	margin: 0;
+}
+
+.xoms-search-form label {
+	position: absolute;
+	right: 0;
+	/* 	top: 4px; */
+	color: #3071a9;
+	z-index: 1;
+}
+
+.xoms-search-form label button {
+	background: none;
+	border: none;
+	height: 32px;
+}
+
+.xoms-search-form label button:focus {
+	outline-style: none;
+}
+
+.xoms-body .xoms-search-form input {
+	padding-right: 22px;
+	font-size: 12px;
+	/* 	height: 32px; */
+}
+
+.xoms-seached {
+	font-weight: bold !important;
+	color: red;
+	background-color: #FFFFAB;
+}
+
+.xoms-input-group .form-control:first-child {
+	border-right-color: #fff;
+}
+
+.xoms-input-group .form-control:focus+.input-group-addon {
+	
+}
+
+.xoms-input-group .input-group-addon {
+	background-color: #3a9ee4;
+	border-color: #2393e1;
+	color: #fff;
+	cursor: pointer;
+	-webkit-transition: color linear .2s;
+	-moz-transition: color linear .2s;
+	-o-transition: color linear .2s;
+	transition: color linear .2s;
+}
+
+.xoms-input-group .input-group-addon:hover, .xoms-input-group .input-group-addon:focus
+	{
+	background-color: #1c85cf;
+	border-color: #1871af;
+}
+/* select2 相关 */
+body .select2-container .select2-choice {
+	height: 30px;
+	line-height: 30px;
+	background-image: none;
+}
+
+.form-control.select2-container {
+	/* 	display: block; */
+	
+}
+
+body .select2-container .select2-choice .select2-arrow {
+	background-image: none;
+	background-color: transparent;
+	border-left: 1px solid #ccc;
+}
+/* xoms tip样式  基于bootstrap popover 弹出框  */
+.xoms-popover {
+	color: #fff;
+	text-align: center;
+	max-width: 600px;
+	min-width: 200px;
+	box-shadow: none;
+	border: none;
+	position: fixed;
+	top: 65px !important;
+}
+
+.xoms-popover .arrow {
+	display: none;
+}
+
+.xoms-popover .popover-content {
+	padding: 15px;
+}
+
+.xoms-popover.xoms-popover-error {
+	background-color: rgba(231, 76, 60, 0.65);
+}
+
+.xoms-popover.xoms-popover-success {
+	background-color: rgba(26, 188, 156, 0.65);
+}
+
+.xoms-popover.xoms-popover-info {
+	background-color: rgba(93, 173, 226, 0.65);
+}
+
+.xoms-popover.xoms-popover-warn {
+	background-color: rgba(241, 196, 15, 0.65);
+}
+
+.xoms-popover-del {
+	color: #fff;
+	position: absolute;
+	top: 0;
+	right: 6px;
+	display: none;
+	outline: none;
+}
+
+.xoms-popover-del.close {
+	opacity: .6;
+}
+
+.xoms-popover-content {
+	padding: 15px;
+}
+
+.xoms-popover-del-show {
+	display: block;
+}
+
+.xoms-popover-del:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+.xoms-popover-content .btn {
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 15px;
+}
+/* 导航相关  */
+.navbar {
+	margin-bottom: 0;
+	border-bottom: 0;
+	border-radius: 0;
+	border: none;
+}
+/* 此CSS是使用timepicker-addon插件时需要用到的，因为内容比较少，为了避免页面上多加载一次链接，把它放到此文件 */
+.ui-timepicker-div .ui-widget-header {
+	margin-bottom: 8px;
+}
+
+.ui-timepicker-div dl {
+	text-align: center;
+	overflow: hidden;
+	padding-left: 60px;
+}
+
+.ui-spinner a.ui-spinner-button {
+	display: none !important;
+}
+
+.ui-timepicker-div dl dt, .ui_tpicker_time {
+	display: none;
+}
+
+.ui-timepicker-div dl dd {
+	width: 25px;
+	float: left;
+	margin-right: 8px;
+}
+
+.ui-timepicker-div {
+	position: absolute;
+	bottom: -14px;
+}
+
+.ui-timepicker-div dl dd .ui-spinner-input {
+	margin: 0;
+	padding: 2px 3px;
+}
+
+.ui-timepicker-div td {
+	font-size: 90%;
+}
+
+.ui-tpicker-grid-label {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ui-timepicker-rtl {
+	direction: rtl;
+}
+
+.ui-timepicker-rtl dl {
+	text-align: right;
+	padding: 0 5px 0 0;
+}
+
+.ui-timepicker-rtl dl dt {
+	float: right;
+	clear: right;
+}
+
+.ui-timepicker-rtl dl dd {
+	margin: 0 40% 10px 10px;
+}
+
+#ui-datepicker-div {
+	z-index: 1031 !important;
+}
+
+.ui_tpicker_unit_hide {
+	display: none;
+}
+/* ztree */
+body .ztree * {
+	font-size: 14px;
+	font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+body .ztree li a.curSelectedNode, body .ztree li a {
+	min-width: 100px;
+	height: auto;
+	padding: 5px 0;
+}
+/* 表格对于小屏幕的处理 */
+@media ( max-width : 768px) {
+	.xoms-grid-container-main {
+		overflow-x: auto;
+	}
+	.xoms-grid-panel {
+		width: 768px;
+	}
+}
+/* 省略号代替超出的字符 在各自的CSS中指定宽度  */
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

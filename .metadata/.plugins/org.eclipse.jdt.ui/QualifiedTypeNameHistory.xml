@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="cn.abl.dao.AArrivalPlanMapper"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.AArrivalPlan"/>
+<fullyQualifiedTypeName name="cn.abl.dao.AArrivalPlanDetailsMapper"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.AArrivalPlanDetailsExample"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.AArrivalPlanDetails"/>
+<fullyQualifiedTypeName name="cn.abl.service.ContractService"/>
+<fullyQualifiedTypeName name="java.net.URLEncoder"/>
+<fullyQualifiedTypeName name="cn.abl.utils.DateUtil"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFWorkbook"/>
+<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFSheet"/>
+<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFCell"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFRow"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.CCorporateInformation"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.SShippingPlan"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.SShippingPlanDetails"/>
+<fullyQualifiedTypeName name="cn.abl.dao.SShippingPlanMapper"/>
+<fullyQualifiedTypeName name="cn.abl.dao.SShippingPlanDetailsMapper"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.SShippingPlanDetailsExample"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+<fullyQualifiedTypeName name="cn.abl.utils.E3Result"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.util.TreeMap"/>
+<fullyQualifiedTypeName name="java.util.Enumeration"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="cn.abl.dao.CCorporateInformationMapper"/>
+<fullyQualifiedTypeName name="cn.abl.pojo.CCorporateInformationExample"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.abl.dao.CCustomerInformationMapperCustom">
+
+	<resultMap id="BaseResultMap" type="cn.abl.pojo.CCustomerInformation" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="customer_code" property="customerCode" jdbcType="VARCHAR" />
+	    <result column="customer_ch_name" property="customerChName" jdbcType="VARCHAR" />
+	    <result column="ch_address" property="chAddress" jdbcType="VARCHAR" />
+	    <result column="customer_en_name" property="customerEnName" jdbcType="VARCHAR" />
+	    <result column="en_address" property="enAddress" jdbcType="VARCHAR" />
+	    <result column="contact" property="contact" jdbcType="VARCHAR" />
+	    <result column="phone" property="phone" jdbcType="VARCHAR" />
+	    <result column="fax" property="fax" jdbcType="VARCHAR" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getAllCustomer" parameterType="cn.abl.pojo.CCustomerInformation" resultMap="BaseResultMap">
+		select * from c_customer_information where create_id in (${createId})
+		<if test="customerCode != null and customerCode != ''">
+			and customer_code = #{customerCode}
+		</if>
+	</select>
+	
+	<delete id="delete" parameterType="string">
+		delete from c_customer_information where id in (${id})
+	</delete>
+
+</mapper>

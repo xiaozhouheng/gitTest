@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="cn.abl.dao.UUserMapperCustom">
+		<!-- 数据库映射字段 -->
+		<resultMap id="BaseResultMap" type="cn.abl.pojo.UUser" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+	    <result column="pass_word" property="passWord" jdbcType="VARCHAR" />
+	    <result column="email" property="email" jdbcType="VARCHAR" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
+	    <result column="user_type" property="userType" jdbcType="INTEGER" />
+	    <result column="modular_privilege" property="modularPrivilege" jdbcType="VARCHAR" />
+	    <result column="data_privilege" property="dataPrivilege" jdbcType="VARCHAR" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	  	</resultMap>
+		<select id="findAllUser" parameterType="cn.abl.pojo.UUser" resultMap="BaseResultMap">
+			select * from u_user where 1 = 1
+				<if test="userName != '' and userName != null">and user_name = #{userName}</if>
+		</select>
+		
+		<select id="findDataPrivilege" resultMap="BaseResultMap">
+			select id,user_name,modular_privilege,data_privilege from u_user where status = 1
+		</select>
+		
+		<select id="checkUserByUsername" resultMap="BaseResultMap" parameterType="cn.abl.pojo.UUser">
+			select * from u_user where 1 = 1
+				<if test="userName != null and userName != ''">and user_name = #{userName}</if>
+				<if test="id != null and id != ''">and id != #{id}</if>
+		</select>
+		
+		<delete id="deleteByID" parameterType="string">
+			delete from u_user where id in (${id})
+		</delete>
+		
+		<insert id="insertUser" parameterType="cn.abl.pojo.UUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+			insert into u_user (id, user_name, pass_word, 
+		      email, status, create_user_id, 
+		      user_type, modular_privilege, data_privilege, 
+		      create_time)
+		    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
+		      #{email,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createUserId,jdbcType=INTEGER}, 
+		      #{userType,jdbcType=INTEGER}, #{modularPrivilege,jdbcType=VARCHAR}, #{dataPrivilege,jdbcType=VARCHAR}, 
+		      #{createTime,jdbcType=TIMESTAMP})
+		</insert>
+		
+		
+	
+		
+	</mapper>

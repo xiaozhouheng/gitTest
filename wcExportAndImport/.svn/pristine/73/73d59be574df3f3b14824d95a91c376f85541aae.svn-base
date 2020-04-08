@@ -1,0 +1,150 @@
+package cn.abl.pojo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class CCustomerInformation implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+
+    private String customerCode;
+
+    private String customerChName;
+
+    private String chAddress;
+
+    private String customerEnName;
+
+    private String enAddress;
+
+    private String contact;
+
+    private String phone;
+
+    private String fax;
+
+    private Date createTime;
+
+    private String createId;
+    
+    private String userName;
+
+    private String passWord;
+
+    private String email;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCustomerCode() {
+        return customerCode;
+    }
+
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode == null ? null : customerCode.trim();
+    }
+
+    public String getCustomerChName() {
+        return customerChName;
+    }
+
+    public void setCustomerChName(String customerChName) {
+        this.customerChName = customerChName == null ? null : customerChName.trim();
+    }
+
+    public String getChAddress() {
+        return chAddress;
+    }
+
+    public void setChAddress(String chAddress) {
+        this.chAddress = chAddress == null ? null : chAddress.trim();
+    }
+
+    public String getCustomerEnName() {
+        return customerEnName;
+    }
+
+    public void setCustomerEnName(String customerEnName) {
+        this.customerEnName = customerEnName == null ? null : customerEnName.trim();
+    }
+
+    public String getEnAddress() {
+        return enAddress;
+    }
+
+    public void setEnAddress(String enAddress) {
+        this.enAddress = enAddress == null ? null : enAddress.trim();
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact == null ? null : contact.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax == null ? null : fax.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateId() {
+        return createId;
+    }
+
+    public void setCreateId(String createId) {
+        this.createId = createId == null ? null : createId.trim();
+    }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+    
+    
+}

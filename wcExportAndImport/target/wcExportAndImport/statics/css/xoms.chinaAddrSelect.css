@@ -1,0 +1,26 @@
+body {
+	position: relative;
+}
+
+.china-addr-container {
+	min-width: 300px;
+	border: 1px solid rgba(58, 158, 228, 0.3);
+	background: #fff;
+	position: absolute;
+	display: none;
+}
+
+.content-main {
+	padding: 10px;
+}
+
+.content-item {
+	width: 25%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	float: left;
+	margin-bottom: 10px;
+	color: #444;
+	padding-right: 8px;
+}

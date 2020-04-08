@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.abl.dao.SShippingPlanMapper" >
+  <resultMap id="BaseResultMap" type="cn.abl.pojo.SShippingPlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="business_number" property="businessNumber" jdbcType="VARCHAR" />
+    <result column="salesperson_code" property="salespersonCode" jdbcType="VARCHAR" />
+    <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+    <result column="destination_country" property="destinationCountry" jdbcType="VARCHAR" />
+    <result column="destination" property="destination" jdbcType="VARCHAR" />
+    <result column="mode_of_transport" property="modeOfTransport" jdbcType="VARCHAR" />
+    <result column="export_ports" property="exportPorts" jdbcType="VARCHAR" />
+    <result column="main_waybill_number" property="mainWaybillNumber" jdbcType="VARCHAR" />
+    <result column="distribution_order_number" property="distributionOrderNumber" jdbcType="VARCHAR" />
+    <result column="overseas_consignee" property="overseasConsignee" jdbcType="VARCHAR" />
+    <result column="domestic_shipper" property="domesticShipper" jdbcType="VARCHAR" />
+    <result column="production_unit" property="productionUnit" jdbcType="VARCHAR" />
+    <result column="total_number" property="totalNumber" jdbcType="INTEGER" />
+    <result column="total_Gross_weight" property="totalGrossWeight" jdbcType="VARCHAR" />
+    <result column="total_capacity" property="totalCapacity" jdbcType="VARCHAR" />
+    <result column="packing_type" property="packingType" jdbcType="INTEGER" />
+    <result column="package_dimensions" property="packageDimensions" jdbcType="VARCHAR" />
+    <result column="supervision_type" property="supervisionType" jdbcType="INTEGER" />
+    <result column="transaction_tyep" property="transactionTyep" jdbcType="INTEGER" />
+    <result column="freight" property="freight" jdbcType="VARCHAR" />
+    <result column="premium" property="premium" jdbcType="VARCHAR" />
+    <result column="invoice" property="invoice" jdbcType="VARCHAR" />
+    <result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+    <result column="contract" property="contract" jdbcType="VARCHAR" />
+    <result column="cpoa" property="cpoa" jdbcType="VARCHAR" />
+    <result column="packing_details" property="packingDetails" jdbcType="VARCHAR" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_userid" property="createUserid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, business_number, salesperson_code, delivery_time, destination_country, destination, 
+    mode_of_transport, export_ports, main_waybill_number, distribution_order_number, 
+    overseas_consignee, domestic_shipper, production_unit, total_number, total_Gross_weight, 
+    total_capacity, packing_type, package_dimensions, supervision_type, transaction_tyep, 
+    freight, premium, invoice, packing_list, contract, cpoa, packing_details, other1, 
+    other2, create_time, create_userid, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.abl.pojo.SShippingPlanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_shipping_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_shipping_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_shipping_plan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.abl.pojo.SShippingPlanExample" >
+    delete from s_shipping_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.abl.pojo.SShippingPlan" >
+    insert into s_shipping_plan (id, business_number, salesperson_code, 
+      delivery_time, destination_country, destination, 
+      mode_of_transport, export_ports, main_waybill_number, 
+      distribution_order_number, overseas_consignee, 
+      domestic_shipper, production_unit, total_number, 
+      total_Gross_weight, total_capacity, packing_type, 
+      package_dimensions, supervision_type, transaction_tyep, 
+      freight, premium, invoice, 
+      packing_list, contract, cpoa, 
+      packing_details, other1, other2, 
+      create_time, create_userid, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{businessNumber,jdbcType=VARCHAR}, #{salespersonCode,jdbcType=VARCHAR}, 
+      #{deliveryTime,jdbcType=TIMESTAMP}, #{destinationCountry,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
+      #{modeOfTransport,jdbcType=VARCHAR}, #{exportPorts,jdbcType=VARCHAR}, #{mainWaybillNumber,jdbcType=VARCHAR}, 
+      #{distributionOrderNumber,jdbcType=VARCHAR}, #{overseasConsignee,jdbcType=VARCHAR}, 
+      #{domesticShipper,jdbcType=VARCHAR}, #{productionUnit,jdbcType=VARCHAR}, #{totalNumber,jdbcType=INTEGER}, 
+      #{totalGrossWeight,jdbcType=VARCHAR}, #{totalCapacity,jdbcType=VARCHAR}, #{packingType,jdbcType=INTEGER}, 
+      #{packageDimensions,jdbcType=VARCHAR}, #{supervisionType,jdbcType=INTEGER}, #{transactionTyep,jdbcType=INTEGER}, 
+      #{freight,jdbcType=VARCHAR}, #{premium,jdbcType=VARCHAR}, #{invoice,jdbcType=VARCHAR}, 
+      #{packingList,jdbcType=VARCHAR}, #{contract,jdbcType=VARCHAR}, #{cpoa,jdbcType=VARCHAR}, 
+      #{packingDetails,jdbcType=VARCHAR}, #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.abl.pojo.SShippingPlan" >
+    insert into s_shipping_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="businessNumber != null" >
+        business_number,
+      </if>
+      <if test="salespersonCode != null" >
+        salesperson_code,
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time,
+      </if>
+      <if test="destinationCountry != null" >
+        destination_country,
+      </if>
+      <if test="destination != null" >
+        destination,
+      </if>
+      <if test="modeOfTransport != null" >
+        mode_of_transport,
+      </if>
+      <if test="exportPorts != null" >
+        export_ports,
+      </if>
+      <if test="mainWaybillNumber != null" >
+        main_waybill_number,
+      </if>
+      <if test="distributionOrderNumber != null" >
+        distribution_order_number,
+      </if>
+      <if test="overseasConsignee != null" >
+        overseas_consignee,
+      </if>
+      <if test="domesticShipper != null" >
+        domestic_shipper,
+      </if>
+      <if test="productionUnit != null" >
+        production_unit,
+      </if>
+      <if test="totalNumber != null" >
+        total_number,
+      </if>
+      <if test="totalGrossWeight != null" >
+        total_Gross_weight,
+      </if>
+      <if test="totalCapacity != null" >
+        total_capacity,
+      </if>
+      <if test="packingType != null" >
+        packing_type,
+      </if>
+      <if test="packageDimensions != null" >
+        package_dimensions,
+      </if>
+      <if test="supervisionType != null" >
+        supervision_type,
+      </if>
+      <if test="transactionTyep != null" >
+        transaction_tyep,
+      </if>
+      <if test="freight != null" >
+        freight,
+      </if>
+      <if test="premium != null" >
+        premium,
+      </if>
+      <if test="invoice != null" >
+        invoice,
+      </if>
+      <if test="packingList != null" >
+        packing_list,
+      </if>
+      <if test="contract != null" >
+        contract,
+      </if>
+      <if test="cpoa != null" >
+        cpoa,
+      </if>
+      <if test="packingDetails != null" >
+        packing_details,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUserid != null" >
+        create_userid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessNumber != null" >
+        #{businessNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="salespersonCode != null" >
+        #{salespersonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null" >
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="destinationCountry != null" >
+        #{destinationCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="modeOfTransport != null" >
+        #{modeOfTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="exportPorts != null" >
+        #{exportPorts,jdbcType=VARCHAR},
+      </if>
+      <if test="mainWaybillNumber != null" >
+        #{mainWaybillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionOrderNumber != null" >
+        #{distributionOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasConsignee != null" >
+        #{overseasConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="domesticShipper != null" >
+        #{domesticShipper,jdbcType=VARCHAR},
+      </if>
+      <if test="productionUnit != null" >
+        #{productionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNumber != null" >
+        #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totalGrossWeight != null" >
+        #{totalGrossWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="totalCapacity != null" >
+        #{totalCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="packingType != null" >
+        #{packingType,jdbcType=INTEGER},
+      </if>
+      <if test="packageDimensions != null" >
+        #{packageDimensions,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionType != null" >
+        #{supervisionType,jdbcType=INTEGER},
+      </if>
+      <if test="transactionTyep != null" >
+        #{transactionTyep,jdbcType=INTEGER},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null" >
+        #{premium,jdbcType=VARCHAR},
+      </if>
+      <if test="invoice != null" >
+        #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="packingList != null" >
+        #{packingList,jdbcType=VARCHAR},
+      </if>
+      <if test="contract != null" >
+        #{contract,jdbcType=VARCHAR},
+      </if>
+      <if test="cpoa != null" >
+        #{cpoa,jdbcType=VARCHAR},
+      </if>
+      <if test="packingDetails != null" >
+        #{packingDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserid != null" >
+        #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.abl.pojo.SShippingPlanExample" resultType="java.lang.Integer" >
+    select count(*) from s_shipping_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_shipping_plan
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessNumber != null" >
+        business_number = #{record.businessNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salespersonCode != null" >
+        salesperson_code = #{record.salespersonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryTime != null" >
+        delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.destinationCountry != null" >
+        destination_country = #{record.destinationCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destination != null" >
+        destination = #{record.destination,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modeOfTransport != null" >
+        mode_of_transport = #{record.modeOfTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exportPorts != null" >
+        export_ports = #{record.exportPorts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainWaybillNumber != null" >
+        main_waybill_number = #{record.mainWaybillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.distributionOrderNumber != null" >
+        distribution_order_number = #{record.distributionOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overseasConsignee != null" >
+        overseas_consignee = #{record.overseasConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domesticShipper != null" >
+        domestic_shipper = #{record.domesticShipper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionUnit != null" >
+        production_unit = #{record.productionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalNumber != null" >
+        total_number = #{record.totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalGrossWeight != null" >
+        total_Gross_weight = #{record.totalGrossWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalCapacity != null" >
+        total_capacity = #{record.totalCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packingType != null" >
+        packing_type = #{record.packingType,jdbcType=INTEGER},
+      </if>
+      <if test="record.packageDimensions != null" >
+        package_dimensions = #{record.packageDimensions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supervisionType != null" >
+        supervision_type = #{record.supervisionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.transactionTyep != null" >
+        transaction_tyep = #{record.transactionTyep,jdbcType=INTEGER},
+      </if>
+      <if test="record.freight != null" >
+        freight = #{record.freight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.premium != null" >
+        premium = #{record.premium,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoice != null" >
+        invoice = #{record.invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packingList != null" >
+        packing_list = #{record.packingList,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contract != null" >
+        contract = #{record.contract,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpoa != null" >
+        cpoa = #{record.cpoa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packingDetails != null" >
+        packing_details = #{record.packingDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUserid != null" >
+        create_userid = #{record.createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_shipping_plan
+    set id = #{record.id,jdbcType=INTEGER},
+      business_number = #{record.businessNumber,jdbcType=VARCHAR},
+      salesperson_code = #{record.salespersonCode,jdbcType=VARCHAR},
+      delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      destination_country = #{record.destinationCountry,jdbcType=VARCHAR},
+      destination = #{record.destination,jdbcType=VARCHAR},
+      mode_of_transport = #{record.modeOfTransport,jdbcType=VARCHAR},
+      export_ports = #{record.exportPorts,jdbcType=VARCHAR},
+      main_waybill_number = #{record.mainWaybillNumber,jdbcType=VARCHAR},
+      distribution_order_number = #{record.distributionOrderNumber,jdbcType=VARCHAR},
+      overseas_consignee = #{record.overseasConsignee,jdbcType=VARCHAR},
+      domestic_shipper = #{record.domesticShipper,jdbcType=VARCHAR},
+      production_unit = #{record.productionUnit,jdbcType=VARCHAR},
+      total_number = #{record.totalNumber,jdbcType=INTEGER},
+      total_Gross_weight = #{record.totalGrossWeight,jdbcType=VARCHAR},
+      total_capacity = #{record.totalCapacity,jdbcType=VARCHAR},
+      packing_type = #{record.packingType,jdbcType=INTEGER},
+      package_dimensions = #{record.packageDimensions,jdbcType=VARCHAR},
+      supervision_type = #{record.supervisionType,jdbcType=INTEGER},
+      transaction_tyep = #{record.transactionTyep,jdbcType=INTEGER},
+      freight = #{record.freight,jdbcType=VARCHAR},
+      premium = #{record.premium,jdbcType=VARCHAR},
+      invoice = #{record.invoice,jdbcType=VARCHAR},
+      packing_list = #{record.packingList,jdbcType=VARCHAR},
+      contract = #{record.contract,jdbcType=VARCHAR},
+      cpoa = #{record.cpoa,jdbcType=VARCHAR},
+      packing_details = #{record.packingDetails,jdbcType=VARCHAR},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_userid = #{record.createUserid,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.abl.pojo.SShippingPlan" >
+    update s_shipping_plan
+    <set >
+      <if test="businessNumber != null" >
+        business_number = #{businessNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="salespersonCode != null" >
+        salesperson_code = #{salespersonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="destinationCountry != null" >
+        destination_country = #{destinationCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="modeOfTransport != null" >
+        mode_of_transport = #{modeOfTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="exportPorts != null" >
+        export_ports = #{exportPorts,jdbcType=VARCHAR},
+      </if>
+      <if test="mainWaybillNumber != null" >
+        main_waybill_number = #{mainWaybillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionOrderNumber != null" >
+        distribution_order_number = #{distributionOrderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasConsignee != null" >
+        overseas_consignee = #{overseasConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="domesticShipper != null" >
+        domestic_shipper = #{domesticShipper,jdbcType=VARCHAR},
+      </if>
+      <if test="productionUnit != null" >
+        production_unit = #{productionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNumber != null" >
+        total_number = #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totalGrossWeight != null" >
+        total_Gross_weight = #{totalGrossWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="totalCapacity != null" >
+        total_capacity = #{totalCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="packingType != null" >
+        packing_type = #{packingType,jdbcType=INTEGER},
+      </if>
+      <if test="packageDimensions != null" >
+        package_dimensions = #{packageDimensions,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionType != null" >
+        supervision_type = #{supervisionType,jdbcType=INTEGER},
+      </if>
+      <if test="transactionTyep != null" >
+        transaction_tyep = #{transactionTyep,jdbcType=INTEGER},
+      </if>
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null" >
+        premium = #{premium,jdbcType=VARCHAR},
+      </if>
+      <if test="invoice != null" >
+        invoice = #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="packingList != null" >
+        packing_list = #{packingList,jdbcType=VARCHAR},
+      </if>
+      <if test="contract != null" >
+        contract = #{contract,jdbcType=VARCHAR},
+      </if>
+      <if test="cpoa != null" >
+        cpoa = #{cpoa,jdbcType=VARCHAR},
+      </if>
+      <if test="packingDetails != null" >
+        packing_details = #{packingDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserid != null" >
+        create_userid = #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.abl.pojo.SShippingPlan" >
+    update s_shipping_plan
+    set business_number = #{businessNumber,jdbcType=VARCHAR},
+      salesperson_code = #{salespersonCode,jdbcType=VARCHAR},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      destination_country = #{destinationCountry,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=VARCHAR},
+      mode_of_transport = #{modeOfTransport,jdbcType=VARCHAR},
+      export_ports = #{exportPorts,jdbcType=VARCHAR},
+      main_waybill_number = #{mainWaybillNumber,jdbcType=VARCHAR},
+      distribution_order_number = #{distributionOrderNumber,jdbcType=VARCHAR},
+      overseas_consignee = #{overseasConsignee,jdbcType=VARCHAR},
+      domestic_shipper = #{domesticShipper,jdbcType=VARCHAR},
+      production_unit = #{productionUnit,jdbcType=VARCHAR},
+      total_number = #{totalNumber,jdbcType=INTEGER},
+      total_Gross_weight = #{totalGrossWeight,jdbcType=VARCHAR},
+      total_capacity = #{totalCapacity,jdbcType=VARCHAR},
+      packing_type = #{packingType,jdbcType=INTEGER},
+      package_dimensions = #{packageDimensions,jdbcType=VARCHAR},
+      supervision_type = #{supervisionType,jdbcType=INTEGER},
+      transaction_tyep = #{transactionTyep,jdbcType=INTEGER},
+      freight = #{freight,jdbcType=VARCHAR},
+      premium = #{premium,jdbcType=VARCHAR},
+      invoice = #{invoice,jdbcType=VARCHAR},
+      packing_list = #{packingList,jdbcType=VARCHAR},
+      contract = #{contract,jdbcType=VARCHAR},
+      cpoa = #{cpoa,jdbcType=VARCHAR},
+      packing_details = #{packingDetails,jdbcType=VARCHAR},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_userid = #{createUserid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

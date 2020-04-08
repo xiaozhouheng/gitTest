@@ -1,0 +1,29 @@
+package cn.abl.service;
+
+import java.util.List;
+
+import com.alibaba.fastjson.JSONArray;
+
+import cn.abl.pojo.AArrivalPlan;
+import cn.abl.pojo.PPictureList;
+import cn.abl.utils.E3Result;
+import cn.abl.utils.PageBean;
+
+public interface AArrivalPlanService {
+
+	PageBean getAllAArrivalPlan(int page, int limit, AArrivalPlan aArrivalPlan, String userId);
+	
+	AArrivalPlan findAArrivalPlanByID(int id);
+	
+	E3Result updateAArrivalPlan(AArrivalPlan aArrivalPlan, String userId);
+	
+	E3Result deleteAArrivalPlan(String ids);
+	
+	E3Result uploadFile(List<PPictureList> list);
+	
+	JSONArray findPicture(String invoice);
+	
+	E3Result deleteFileByID(int id);
+	
+	String findFileByID(int id);
+}

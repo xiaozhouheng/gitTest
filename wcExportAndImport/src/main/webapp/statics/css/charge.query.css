@@ -1,0 +1,85 @@
+.weight-item .weight-input {
+	width: 45px;
+	display: inline-block;
+	margin-right: 3px;
+}
+
+@media ( max-width : 1800px) {
+	.index-charge-div .weight-item .weight-input {
+		width: 30px;
+		margin-right: 0px;
+	}
+}
+
+.index-charge-div .weight-item {
+	border-bottom: 1px dotted #D5D4D4;
+	padding-top: 3px;
+}
+
+.index-charge-div .volume-div {
+	margin-top: 5px;
+}
+
+.charge-gross-weight {
+	margin-right: 15px;
+}
+
+.weight-item .control-label {
+	margin-right: 5px;
+}
+
+.weight-item {
+	padding-bottom: 10px;
+}
+
+.charge-grid-main {
+	padding-top: 10px;
+	/* 	display: none; */
+}
+
+.volume-temp {
+	display: none;
+}
+
+div[data-num="0"] a.del {
+	display: none;
+}
+
+.charge-icon {
+	color: #5cb85c;
+}
+
+.charge-notracking-icon {
+	/* 	color: #ec971f; */
+	
+}
+
+.fee-item-title {
+	/* font-size: 12px;
+	color: #555; */
+	
+}
+/* 这个页面不需要滚动条 */
+.ui-jqgrid .ui-jqgrid-bdiv {
+	overflow: hidden;
+	min-height: 400px;
+}
+
+.fail-row {
+	color: red;
+}
+
+.charge-outofservice-row td, .charge-outofservice-row .charge-icon {
+	color: #B5B4B4;
+}
+
+.charge-verification-img {
+	width: 120px;
+	height: 32px;
+	vertical-align: bottom;
+}
+
+#verificationCode {
+	/* 	display: inline-block; */
+	width: 80px;
+}

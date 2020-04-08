@@ -1,0 +1,82 @@
+<%@ page pageEncoding="UTF-8" %>
+<nav class="navbar navbar-default container-fluid">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<%=path%>/login1/toindex.html">安布雷</a>
+			</div>
+
+			<div class="collapse navbar-collapse "
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav ">
+					<li class="active"><a href="<%=path%>/login1/toindex.html">个人中心</a></li>
+					<li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">进口货物<span class="caret"></span></a>
+						<ul class="dropdown-menu active">
+							<!--<li><a href="<%=path%>/my_orders/to_create.html">到货计划表</a></li>-->
+							<li><a href="page/pageJump.do?path=views/aArrivalPlan/aArrivalPlan">到货计划表</a></li>
+							<li><a href="<%=path%>/orderManage/draft.html">审核</a></li>
+							<li><a href="<%=path%>/my_order/order_problem.html">订单状态二</a></li>
+							<li><a href="<%=path%>/my_orders/to_create.html">订单状态三</a></li>
+							<li><a href="<%=path%>/my_orders/to_create.html">订单状态四</a></li>
+						</ul></li>
+					<li class="dropdown "><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">出口货物<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu active">
+							<!--<li><a href="<%=path%>/my_orders/to_create.html">出货计划表</a></li>-->
+							<li><a href="page/pageJump.do?path=views/sShippingPlan/SShippingPlan">出货计划表</a></li>
+							<li><a href="<%=path%>/orderManage/draft.html">订单状态一</a></li>
+							<li><a href="<%=path%>/my_order/order_problem.html">订单状态二</a></li>
+							<li><a href="<%=path%>/my_orders/to_create.html">订单状态三</a></li>
+							<li><a href="<%=path%>/my_orders/to_create.html">订单状态四</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">企业数据库<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="page/pageJump.do?path=views/product/productVO">产品备案</a></li>
+							<li><a href="<%=path%>/freeCount/findqt.html">单证管理</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">企业信息<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<!--<li><a href="./company/companyUI">企业基本信息</a></li> -->
+							<li><a href="<%=path%>/company/editCompany">企业基本信息</a></li>
+							<li><a href="<%=path%>/customs/customsUI">海关登记信息</a></li>
+							<li><a href="<%=path%>/customer/customerUI">往来客户信息管理</a></li>
+						</ul></li>
+
+				</ul>
+			<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="?lang=zh_CN"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-haspopup="true" aria-expanded="false">语言<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="?lang=zh_CN">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+									src="<%=path%>/statics/img/cn.gif" alt="中文" />&nbsp;&nbsp;&nbsp;中文
+							</a></li>
+							<li><a href="?lang=en_US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+									src="<%=path%>/statics/img/us.gif" alt="English" />&nbsp;&nbsp;&nbsp;English
+							</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><%=username %><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<%=path%>/login1/loginOut.html">退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>

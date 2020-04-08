@@ -1,0 +1,63 @@
+.tab-content {
+	padding-top: 15px;
+}
+
+.tab-content a {
+	cursor: pointer;
+}
+
+#search-form-section {
+	float: right;
+}
+
+#search-form-section .search-form-section-content {
+	/* 	width: 352px; */
+	
+}
+
+.problem-status, .notice-status {
+	/* 	float: left; */
+	/* 	width: 100px; */
+	
+}
+
+.xoms-search-form {
+	float: right;
+}
+
+.xoms-search-form .xoms-keyword-input {
+	width: 200px;
+}
+
+@media ( max-width : 768px) {
+	.problem-form .form-group, .notice-form .form-group {
+		display: inline-block;
+		vertical-align: middle;
+		margin-bottom: 0;
+	}
+}
+
+#issueKind {
+	width: 150px;
+}
+
+/* 页签 表格*/
+.arrearage-list-main {
+	/* 	margin-top: 10px; */
+	
+}
+
+.problem-list-main, .notice-list-main {
+	margin-top: 10px;
+}
+
+/* 批量回复dialog */
+#batch-reply-dialog .content {
+	font-size: 14px;
+	margin: 19px 0 0 8px;
+}
+
+#batch-reply-dialog .content textarea {
+	width: 650px;
+	height: 330px;
+}

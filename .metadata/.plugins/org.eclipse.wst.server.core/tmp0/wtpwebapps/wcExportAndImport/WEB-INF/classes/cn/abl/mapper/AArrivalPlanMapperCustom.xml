@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.abl.dao.AArrivalPlanMapperCustom">
+
+   <resultMap id="BaseResultMap" type="cn.abl.pojo.AArrivalPlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="import_port" property="importPort" jdbcType="VARCHAR" />
+    <result column="estimated_arrival_time" property="estimatedArrivalTime" jdbcType="TIMESTAMP" />
+    <result column="mode_of_transport" property="modeOfTransport" jdbcType="INTEGER" />
+    <result column="main_waybill_number" property="mainWaybillNumber" jdbcType="VARCHAR" />
+    <result column="fen_waybill_number" property="fenWaybillNumber" jdbcType="VARCHAR" />
+    <result column="overseas_shipper" property="overseasShipper" jdbcType="VARCHAR" />
+    <result column="overseas_consignee" property="overseasConsignee" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="VARCHAR" />
+    <result column="packing_type" property="packingType" jdbcType="INTEGER" />
+    <result column="ippc" property="ippc" jdbcType="INTEGER" />
+    <result column="package_dimensions" property="packageDimensions" jdbcType="VARCHAR" />
+    <result column="supervision_type" property="supervisionType" jdbcType="INTEGER" />
+    <result column="transaction_type" property="transactionType" jdbcType="INTEGER" />
+    <result column="freight" property="freight" jdbcType="VARCHAR" />
+    <result column="premium" property="premium" jdbcType="VARCHAR" />
+    <result column="ie_flag" property="ieFlag" jdbcType="VARCHAR" />
+    <result column="customs_order_number" property="customsOrderNumber" jdbcType="VARCHAR" />
+    <result column="uniform_numbers" property="uniformNumbers" jdbcType="VARCHAR" />
+    <result column="customs_code" property="customsCode" jdbcType="VARCHAR" />
+    <result column="invoice" property="invoice" jdbcType="VARCHAR" />
+    <result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+    <result column="contract" property="contract" jdbcType="VARCHAR" />
+    <result column="cpoa" property="cpoa" jdbcType="VARCHAR" />
+    <result column="bill_of_lading" property="billOfLading" jdbcType="VARCHAR" />
+    <result column="arrival_notice" property="arrivalNotice" jdbcType="VARCHAR" />
+    <result column="packing_details" property="packingDetails" jdbcType="VARCHAR" />
+    <result column="certificate_of_origin" property="certificateOfOrigin" jdbcType="VARCHAR" />
+    <result column="pre_recorded" property="preRecorded" jdbcType="VARCHAR" />
+    <result column="customs_declaration" property="customsDeclaration" jdbcType="VARCHAR" />
+    <result column="release_notice" property="releaseNotice" jdbcType="VARCHAR" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+    <result column="other3" property="other3" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="createUserName" property="createUserName" jdbcType="VARCHAR" />
+    <result column="param1" property="param1" jdbcType="VARCHAR" />
+    <result column="param2" property="param2" jdbcType="VARCHAR" />
+    <result column="param3" property="param3" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="getAllAArrivalPlan" resultMap="BaseResultMap" parameterType="cn.abl.pojo.AArrivalPlan">
+  	SELECT p.*, u.user_name createUserName FROM a_arrival_plan p LEFT JOIN u_user u ON p.create_userid = u.id WHERE p.create_userid in (${userId})
+  		<if test="mainWaybillNumber != null and mainWaybillNumber != ''">
+  		and main_waybill_number = #{mainWaybillNumber}
+  		</if>
+  		<if test="fenWaybillNumber != null and fenWaybillNumber != ''">
+  		and fen_waybill_number = #{fenWaybillNumber}
+  		</if>
+  </select>
+  
+  <resultMap type="cn.abl.pojo.AArrivalPlan" id="getAArrivalPlan">
+  	<result column="id" property="id" jdbcType="INTEGER" />
+    <result column="import_port" property="importPort" jdbcType="VARCHAR" />
+    <result column="estimated_arrival_time" property="estimatedArrivalTime" jdbcType="TIMESTAMP" />
+    <result column="mode_of_transport" property="modeOfTransport" jdbcType="INTEGER" />
+    <result column="main_waybill_number" property="mainWaybillNumber" jdbcType="VARCHAR" />
+    <result column="fen_waybill_number" property="fenWaybillNumber" jdbcType="VARCHAR" />
+    <result column="overseas_shipper" property="overseasShipper" jdbcType="VARCHAR" />
+    <result column="overseas_consignee" property="overseasConsignee" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="VARCHAR" />
+    <result column="packing_type" property="packingType" jdbcType="INTEGER" />
+    <result column="ippc" property="ippc" jdbcType="INTEGER" />
+    <result column="package_dimensions" property="packageDimensions" jdbcType="VARCHAR" />
+    <result column="supervision_type" property="supervisionType" jdbcType="INTEGER" />
+    <result column="transaction_type" property="transactionType" jdbcType="INTEGER" />
+    <result column="freight" property="freight" jdbcType="VARCHAR" />
+    <result column="premium" property="premium" jdbcType="VARCHAR" />
+    <result column="ie_flag" property="ieFlag" jdbcType="VARCHAR" />
+    <result column="customs_order_number" property="customsOrderNumber" jdbcType="VARCHAR" />
+    <result column="uniform_numbers" property="uniformNumbers" jdbcType="VARCHAR" />
+    <result column="customs_code" property="customsCode" jdbcType="VARCHAR" />
+    <result column="invoice" property="invoice" jdbcType="VARCHAR" />
+    <result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+    <result column="contract" property="contract" jdbcType="VARCHAR" />
+    <result column="cpoa" property="cpoa" jdbcType="VARCHAR" />
+    <result column="bill_of_lading" property="billOfLading" jdbcType="VARCHAR" />
+    <result column="arrival_notice" property="arrivalNotice" jdbcType="VARCHAR" />
+    <result column="packing_details" property="packingDetails" jdbcType="VARCHAR" />
+    <result column="certificate_of_origin" property="certificateOfOrigin" jdbcType="VARCHAR" />
+    <result column="pre_recorded" property="preRecorded" jdbcType="VARCHAR" />
+    <result column="customs_declaration" property="customsDeclaration" jdbcType="VARCHAR" />
+    <result column="release_notice" property="releaseNotice" jdbcType="VARCHAR" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+    <result column="other3" property="other3" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="createUserName" property="createUserName" jdbcType="VARCHAR" />
+    <result column="param1" property="param1" jdbcType="VARCHAR" />
+    <result column="param2" property="param2" jdbcType="VARCHAR" />
+    <result column="param3" property="param3" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    
+    	<collection property="aArrivalPlanDetailsVOs" ofType="cn.abl.vo.AArrivalPlanDetailsVO">
+    		<id column="aid" property="aid" jdbcType="INTEGER" />
+		    <result column="serial_number" property="serialNumber" jdbcType="INTEGER" />
+		    <result column="item_number" property="itemNumber" jdbcType="INTEGER" />
+		    <result column="ch_item_name" property="chItemName" jdbcType="VARCHAR" />
+		    <result column="hscode" property="hscode" jdbcType="VARCHAR" />
+		    <result column="model" property="model" jdbcType="VARCHAR" />
+		    <result column="number" property="number" jdbcType="INTEGER" />
+		    <result column="unit" property="unit" jdbcType="VARCHAR" />
+		    <result column="price" property="price" jdbcType="VARCHAR" />
+		    <result column="total_price" property="totalPrice" jdbcType="VARCHAR" />
+		    <result column="currency" property="currency" jdbcType="VARCHAR" />
+		    <result column="net_weight" property="netWeight" jdbcType="VARCHAR" />
+		    <result column="country_of_origin" property="countryOfOrigin" jdbcType="VARCHAR" />
+		    <result column="note" property="note" jdbcType="VARCHAR" />
+		    <result column="a_id" property="aId" jdbcType="INTEGER" />
+    	</collection>
+  </resultMap>
+  
+  <select id="getAArrivalPlanByID" parameterType="java.lang.Integer" resultMap="getAArrivalPlan">
+  	SELECT
+		a.*, 
+		ad.id aid,
+		ad.ch_item_name,
+		ad.country_of_origin,
+		ad.currency,
+		ad.hscode,
+		ad.item_number,
+		ad.a_id,
+		ad.model,
+		ad.net_weight,
+		ad.note,
+		ad.number,
+		ad.price,
+		ad.serial_number,
+		ad.total_price,
+		ad.unit
+	FROM
+		a_arrival_plan a
+	LEFT JOIN a_arrival_plan_details ad ON a.id = ad.a_id
+	WHERE 
+		a.id = #{id}
+  </select>
+  
+  <delete id="deleteAArrivalPlan" parameterType="string">
+  	DELETE FROM a_arrival_plan WHERE id IN (${id})
+  </delete>
+  
+  <delete id="deleteAArrivalPlanDetails" parameterType="string">
+  	DELETE FROM a_arrival_plan_details WHERE a_id IN (${aid})
+  </delete>
+  
+  <resultMap id="BaseResultMap2" type="cn.abl.pojo.AArrivalPlanDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="serial_number" property="serialNumber" jdbcType="INTEGER" />
+    <result column="item_number" property="itemNumber" jdbcType="INTEGER" />
+    <result column="ch_item_name" property="chItemName" jdbcType="VARCHAR" />
+    <result column="hscode" property="hscode" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="total_price" property="totalPrice" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="net_weight" property="netWeight" jdbcType="VARCHAR" />
+    <result column="country_of_origin" property="countryOfOrigin" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="a_id" property="aId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="getAllAArrivalPlanDetails" parameterType="cn.abl.pojo.AArrivalPlanDetails" resultMap="BaseResultMap2">
+  	SELECT * FROM a_arrival_plan_details where a_id = #{aId}
+  		<if test="itemNumber != null and itemNumber != ''">
+  			and item_number = #{itemNumber}
+  		</if>
+  		<if test="hscode != null and hscode != ''">
+  			and hscode = #{hscode}
+  		</if>
+  </select>	
+  
+  <select id="checkUpdate" parameterType="java.lang.Integer" resultType="cn.abl.pojo.AArrivalPlanDetails">
+  	select * from a_arrival_plan_details where item_number = #{param} and id != #{id}
+  </select>
+  
+  <delete id="deleteAArrivalPlanDetailsByID" parameterType="string">
+  	delete from a_arrival_plan_details where id in (${id})
+  </delete>
+  
+  <insert id="insertAArrivalPlan" parameterType="cn.abl.pojo.AArrivalPlan" useGeneratedKeys="true" keyProperty="id">
+  	insert into a_arrival_plan (id, import_port, estimated_arrival_time, 
+      mode_of_transport, main_waybill_number, fen_waybill_number, 
+      overseas_shipper, overseas_consignee, unit, 
+      number, weight, packing_type, 
+      ippc, package_dimensions, supervision_type, 
+      transaction_type, freight, premium, 
+      ie_flag, customs_order_number, uniform_numbers, 
+      customs_code, invoice, packing_list, 
+      contract, cpoa, bill_of_lading, 
+      arrival_notice, packing_details, certificate_of_origin, 
+      pre_recorded, customs_declaration, release_notice, 
+      other1, other2, other3, 
+      create_time, create_userid, param1, 
+      param2, param3, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{importPort,jdbcType=VARCHAR}, #{estimatedArrivalTime,jdbcType=TIMESTAMP}, 
+      #{modeOfTransport,jdbcType=INTEGER}, #{mainWaybillNumber,jdbcType=VARCHAR}, #{fenWaybillNumber,jdbcType=VARCHAR}, 
+      #{overseasShipper,jdbcType=VARCHAR}, #{overseasConsignee,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{weight,jdbcType=VARCHAR}, #{packingType,jdbcType=INTEGER}, 
+      #{ippc,jdbcType=INTEGER}, #{packageDimensions,jdbcType=VARCHAR}, #{supervisionType,jdbcType=INTEGER}, 
+      #{transactionType,jdbcType=INTEGER}, #{freight,jdbcType=VARCHAR}, #{premium,jdbcType=VARCHAR}, 
+      #{ieFlag,jdbcType=VARCHAR}, #{customsOrderNumber,jdbcType=VARCHAR}, #{uniformNumbers,jdbcType=VARCHAR}, 
+      #{customsCode,jdbcType=VARCHAR}, #{invoice,jdbcType=VARCHAR}, #{packingList,jdbcType=VARCHAR}, 
+      #{contract,jdbcType=VARCHAR}, #{cpoa,jdbcType=VARCHAR}, #{billOfLading,jdbcType=VARCHAR}, 
+      #{arrivalNotice,jdbcType=VARCHAR}, #{packingDetails,jdbcType=VARCHAR}, #{certificateOfOrigin,jdbcType=VARCHAR}, 
+      #{preRecorded,jdbcType=VARCHAR}, #{customsDeclaration,jdbcType=VARCHAR}, #{releaseNotice,jdbcType=VARCHAR}, 
+      #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}, #{other3,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserid,jdbcType=INTEGER}, #{param1,jdbcType=VARCHAR}, 
+      #{param2,jdbcType=VARCHAR}, #{param3,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  
+  <resultMap type="cn.abl.vo.CustomsDeclarationVO" id="CustomsDeclarationMap">
+  	<result column="id" property="id" jdbcType="INTEGER" />
+    <result column="ie_flag" property="ieFlag" jdbcType="VARCHAR" />
+    <result column="invoice" property="invoice" jdbcType="VARCHAR" />
+    <result column="packing_list" property="packingList" jdbcType="VARCHAR" />
+    <result column="contract" property="contract" jdbcType="VARCHAR" />
+    <result column="cpoa" property="cpoa" jdbcType="VARCHAR" />
+    <result column="bill_of_lading" property="billOfLading" jdbcType="VARCHAR" />
+    <result column="arrival_notice" property="arrivalNotice" jdbcType="VARCHAR" />
+    <result column="packing_details" property="packingDetails" jdbcType="VARCHAR" />
+    <result column="certificate_of_origin" property="certificateOfOrigin" jdbcType="VARCHAR" />
+    <result column="pre_recorded" property="preRecorded" jdbcType="VARCHAR" />
+    <result column="customs_declaration" property="customsDeclaration" jdbcType="VARCHAR" />
+    <result column="release_notice" property="releaseNotice" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="param1" property="param1" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="company_ch_name" property="companyChName" jdbcType="VARCHAR"/>
+    <result column="param3" property="param3" jdbcType="VARCHAR" />
+    <result column="create_userid" property="userid" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="VARCHAR" />
+    <result column="main_waybill_number" property="mainWaybillNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="importDeclaration" parameterType="string" resultMap="CustomsDeclarationMap">
+  	SELECT
+		a.id,
+		a.param1,
+		a.ie_flag,
+		a.create_time,
+		a.`status`,
+		c.company_ch_name,
+		a.invoice,
+		a.packing_list,
+		a.contract,
+		a.cpoa,
+		a.bill_of_lading,
+		a.arrival_notice,
+		a.packing_details,
+		a.certificate_of_origin,
+		a.pre_recorded,
+		a.customs_declaration,
+		a.release_notice,
+		a.param3,
+		a.create_userid,
+		a.number,
+		a.weight,
+		a.main_waybill_number
+	FROM
+		a_arrival_plan a
+	LEFT JOIN c_corporate_information c ON a.create_userid = c.create_userid
+	<where>
+		<if test="userType == 1">
+		and a.param3 = #{createUserid}
+		</if>
+		<if test="param1 != null and param1 != ''">
+		and a.param1 = #{param1}
+		</if>
+		<if test="customsCode != null and customsCode != ''">
+		and a.customs_code = #{customsCode}
+		</if>
+		<if test="beginTime != null and beginTime != ''">
+		and a.create_time between #{beginTime} 
+		</if>
+		<if test="endTime != null and endTime != ''">
+		and #{endTime}
+		</if>
+		<if test="status != null and status != ''">
+		and a.status = #{status}
+		</if>
+	</where>
+  </select>
+  
+  <select id="getUserForType" resultType="cn.abl.pojo.UUser">
+  	select id,user_name userName from u_user where user_type = 1
+  </select>
+  
+  <update id="updateReview" parameterType="java.lang.Integer">
+  	update a_arrival_plan set param3 = #{userId} where id = #{id}
+  </update>
+  
+  <select id="getOrderStatistic" resultType="cn.abl.vo.OrderStatistics">
+  	SELECT
+		DATE_FORMAT(ap.create_time,'%Y-%m') evermonth,
+		COUNT(1) size,
+		SUM(apd.total_price) totalPrice
+	FROM
+		a_arrival_plan_details apd
+	LEFT JOIN a_arrival_plan ap ON apd.a_id = ap.id
+	WHERE 
+	YEAR (ap.create_time) = DATE_FORMAT(NOW(), '%Y')
+	GROUP BY evermonth
+  </select>
+</mapper>

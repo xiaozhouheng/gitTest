@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.abl.dao.CCorporateInformationMapperCustom">
+	<resultMap id="BaseResultMap" type="cn.abl.pojo.CCorporateInformation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="company_ch_name" property="companyChName" jdbcType="VARCHAR" />
+    <result column="company_en_name" property="companyEnName" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="en_address" property="enAddress" jdbcType="VARCHAR" />
+    <result column="credit_code" property="creditCode" jdbcType="VARCHAR" />
+    <result column="taxpayer_type" property="taxpayerType" jdbcType="INTEGER" />
+    <result column="customs_code" property="customsCode" jdbcType="VARCHAR" />
+    <result column="commodity_number" property="commodityNumber" jdbcType="VARCHAR" />
+    <result column="registered_capital" property="registeredCapital" jdbcType="VARCHAR" />
+    <result column="corporate" property="corporate" jdbcType="VARCHAR" />
+    <result column="corporate_contact" property="corporateContact" jdbcType="VARCHAR" />
+    <result column="fixed_telephone" property="fixedTelephone" jdbcType="VARCHAR" />
+    <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
+    <result column="business_mailbox" property="businessMailbox" jdbcType="VARCHAR" />
+    <result column="business_scope" property="businessScope" jdbcType="VARCHAR" />
+    <result column="entity_type" property="entityType" jdbcType="INTEGER" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="foreign_trade" property="foreignTrade" jdbcType="VARCHAR" />
+    <result column="customs_registration" property="customsRegistration" jdbcType="VARCHAR" />
+    <result column="uscc" property="uscc" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_userid" property="createUserid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="annual_inspection_time" property="annualInspectionTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+	<select id="getAllCompany" resultMap="BaseResultMap" parameterType="cn.abl.pojo.CCorporateInformation">
+		select * from c_corporate_information where 1 = 1
+			<if test="companyChName != null and companyChName != ''">
+				and company_ch_name = #{companyChName}
+			</if>
+			<if test="companyEnName != null and companyEnName != ''">
+				and company_en_name = #{companyEnName}
+			</if>
+			<if test="creditCode != null and creditCode != ''">
+				and credit_code = #{creditCode}
+			</if>
+	</select>
+	
+	<select id="checkCompanyChName" resultType="int">
+		select count(1) from c_corporate_information where id != #{id} and company_ch_name = #{companyChName} 
+	</select>
+	
+	<select id="checkCompanyEnName" resultType="int">
+		select count(1) from c_corporate_information where id != #{id} and company_en_name = #{companyEnName} 
+	</select>
+	
+	<select id="checkCreditCode" resultType="int">
+		select count(1) from c_corporate_information where id != #{id} and credit_code = #{creditCode} 
+	</select>
+	
+	<select id="checkCustomsCode" resultType="int">
+		select count(1) from c_corporate_information where id != #{id} and customs_code = #{customsCode} 
+	</select>
+	
+	<select id="checkCommodityNumber" resultType="int">
+		select count(1) from c_corporate_information where id != #{id} and commodity_number = #{commodityNumber} 
+	</select>
+	
+	<delete id="deleteCompanyByID" parameterType="string">
+		delete from c_corporate_information where id in(${id})
+	</delete>
+	
+	
+	
+	<select id="findByUserId" resultType="string" parameterType="string">
+		select id from c_corporate_information where create_userid = #{createUserid}  and status = 1 and annual_inspection_time >now()
+	</select>
+	
+	<select id="AnnualInspection" parameterType="string" resultType="int">
+		SELECT COUNT(1) FROM c_corporate_information WHERE annual_inspection_time BETWEEN NOW() AND date_add(NOW(), interval 1 MONTH)
+	</select>
+</mapper>

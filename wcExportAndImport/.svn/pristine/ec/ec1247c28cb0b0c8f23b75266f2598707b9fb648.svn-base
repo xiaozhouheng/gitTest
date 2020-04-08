@@ -1,0 +1,151 @@
+package cn.abl.controller;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
+import cn.abl.pojo.AArrivalPlan;
+import cn.abl.pojo.PPictureList;
+import cn.abl.pojo.UUser;
+import cn.abl.service.AArrivalPlanService;
+import cn.abl.utils.E3Result;
+import cn.abl.utils.IDUtils;
+import cn.abl.utils.JsonUtils;
+import cn.abl.utils.PageBean;
+
+@Controller
+@RequestMapping("AArrivalPlan")
+public class AArrivalPlanController {
+	
+	@Autowired
+	private AArrivalPlanService aArrivalPlanService;
+
+	@RequestMapping(value = "/getAllAArrivalPlan", method = RequestMethod.GET)
+	@ResponseBody
+	public JSONObject getAllAArrivalPlan(int page, int limit, AArrivalPlan aArrivalPlan, HttpServletRequest request) {
+		UUser user = (UUser)request.getSession().getAttribute("user");
+		PageBean pageBean = aArrivalPlanService.getAllAArrivalPlan(page, limit, aArrivalPlan, user.getDataPrivilege());
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("code", 0);
+		jsonObject.put("msg", "");
+		jsonObject.put("count", pageBean.getTotal());
+		jsonObject.put("value", pageBean.getList());
+		jsonObject.put("success", true);
+		return jsonObject;
+	}
+	
+	@RequestMapping(value = "/enditAArrivalPlan")
+	public String enditAllAArrivalPlan(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		if (null != id) {
+			AArrivalPlan aArrivalPlan = aArrivalPlanService.findAArrivalPlanByID(Integer.valueOf(id));
+			request.setAttribute("aArrivalPlan", aArrivalPlan);
+		}
+		return "views/aArrivalPlan/enditAArrivalPlan";
+	}
+	
+	@RequestMapping(value = "/updateAArrivalPlan", method = RequestMethod.POST)
+	@ResponseBody
+	public E3Result updateAArrivalPlan(HttpServletRequest request) throws Exception {
+		String param = request.getParameter("aArrivalPlan");
+		AArrivalPlan aArrivalPlan = JsonUtils.jsonToPojo(param, AArrivalPlan.class);
+		String userId = request.getSession().getAttribute("userId").toString();
+		E3Result result = aArrivalPlanService.updateAArrivalPlan(aArrivalPlan, userId);
+		return result;
+	}
+	
+	@RequestMapping(value = "/deleteAArrivalPlan", method = RequestMethod.POST)
+	@ResponseBody
+	public E3Result deleteAArrivalPlan(String ids) {
+		E3Result result = aArrivalPlanService.deleteAArrivalPlan(ids);
+		return result;
+	}
+	
+	@RequestMapping(value = "/jumpAArrivalPlanDetails")
+	public String jumpAArrivalPlanDetails(HttpServletRequest request){
+		String id = request.getParameter("id");
+		request.setAttribute("id", id);
+		return "views/aArrivalPlan/AArrivalPlanDetails";
+	}
+	
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	@ResponseBody
+	public E3Result uploadFile(@RequestParam("files") MultipartFile[] files, String invoice) throws IllegalStateException, IOException {
+		String path = "C:\\wc\\AArrivalPlan\\" + IDUtils.genImageName() + "\\";
+		ArrayList<PPictureList> list = new ArrayList<PPictureList>();
+		for (MultipartFile file : files) {
+			String originalFilename = file.getOriginalFilename();
+			File dirFile  = new File(path, originalFilename);
+            if (!dirFile.exists()){
+            	dirFile.mkdirs();
+            }
+            file.transferTo(dirFile);
+            PPictureList pictureList = new PPictureList();
+            pictureList.setInvoice(invoice);
+            pictureList.setPicAddress(dirFile.getPath());
+            list.add(pictureList);
+		}
+		E3Result result = aArrivalPlanService.uploadFile(list);
+		return result;
+	}
+	
+	@RequestMapping(value = "findPicture", method = RequestMethod.GET)
+	@ResponseBody
+	public JSONArray findPicture(String invoice) {
+		JSONArray jsonArray = aArrivalPlanService.findPicture(invoice);
+		return jsonArray;
+	}
+	
+	@RequestMapping(value = "/deleteFileByID", method = RequestMethod.POST)
+	@ResponseBody
+	public E3Result deleteFileByID(int id) {
+		E3Result result = aArrivalPlanService.deleteFileByID(id);
+		return result;
+	}
+	
+	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
+	public void downloadBL(int id, HttpServletResponse response) {
+		String fileAdress = aArrivalPlanService.findFileByID(id);
+		File file = new File(fileAdress);
+		try {
+		if (!file.exists()) {
+				response.setContentType("text/html; charset=utf-8");
+				response.getWriter().print("你要下载的文件已被删除!");
+		}
+		String name = file.getName();
+		response.addHeader("Content-Disposition", "attachment;filename=" + new String(name.getBytes("utf-8"),"ISO8859-1"));
+		response.setContentType("multipart/form-data");
+		FileInputStream inputStream = new FileInputStream(file);
+		BufferedOutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
+		byte buffer[] = new byte[1024];
+		int len = 0;
+		while ((len = inputStream.read(buffer)) > 0) {
+			outputStream.write(buffer, 0, len);
+			outputStream.flush();
+		}
+		outputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

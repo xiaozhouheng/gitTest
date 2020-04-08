@@ -1,0 +1,31 @@
+.xoms-secnavbar a {
+	text-decoration: none;
+}
+
+.xoms-secnavbar {
+	margin-top: -20px;
+}
+
+.container-fluid {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#excelFile {
+	display: none;
+}
+
+#transport {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.ztck_input {
+	margin-top: 10px;
+}
+.zhongda{
+	font-size:15px;
+	font-weight: bold;
+}
