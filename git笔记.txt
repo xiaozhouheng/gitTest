@@ -1,0 +1,37 @@
+$ ssh -T git@github.com 测试ssh-key是否成功
+
+$ git config --global user.name  "name"//你的GitHub登陆名
+
+$ git config --global user.email "123@126.com"//你的GitHub注册邮箱
+
+$ git remote add origin git@github.com:flora0103/example.git    //关联一个远程库命令， 
+
+$ add .        （注：别忘记后面的.，此操作是把master文件夹下面的文件都添加进来）
+
+$ git commit  -m  "提交信息"  （注：“提交信息”里面换成你需要，如“first commit”）
+
+$ git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
+
+$ git clone 项目地址 （此处的项目地址）
+
+1.更新本地代码库
+git pull
+2.对需要删除的文件、文件夹进行如下操作:
+git rm ss.c(删除文件)
+git rm -r aaa (删除文件夹)
+3.提交修改
+git commit -m “Delete files.”
+4.将修改提交到远程仓库的xxx分支:
+git push origin xxx
+
+1. 查看远程分支
+
+$ git branch -a
+
+首先，我们创建dev分支，然后切换到dev分支：
+
+$ git checkout -b dev
+git checkout命令加上-b参数表示创建并切换，
+相当于以下两条命令：
+$ git branch dev
+$ git checkout dev
